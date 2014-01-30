@@ -11,7 +11,7 @@ end
 class Classifier < ModelElement 
 end
  
-class Feature 
+class Feature < ModelElement 
 attributes 
  visibility:Visibility 
 end
@@ -48,12 +48,12 @@ operations
 	operation()
 end
 
-class ConcreteComponent < Component
+class ConcreteComponent < Component 
 operations
 	operation()
 end
 
-class Decorator < Component
+class Decorator < Component 
 attributes
 	component: Component
 operations
@@ -105,3 +105,8 @@ aggregation dep between
  Decorator[0..*] role decorator
  Component[1] role comp 
 end   
+
+association op between 
+ Classifier[1] role type 
+ Feature[0..*] role feat
+end 
