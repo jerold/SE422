@@ -40,6 +40,9 @@ end
 class Association
 end
 
+class Aggregation
+end
+
 class Parameter
 end
 
@@ -48,19 +51,19 @@ operations
 	operation()
 end
 
-class ConcreteComponent < Component 
+class ConcreteComponent < Class
 operations
 	operation()
 end
 
-class Decorator < Component 
+class Decorator < Class
 attributes
 	component: Component
 operations
 	operation()
 end
 
-class ConcreteDecorator < Decorator
+class ConcreteDecorator < Class
 operations
 	operation()
 end
@@ -91,6 +94,11 @@ association associationend_ass between
  Association[1] role as 
 end
 
+association associationend_agg between 
+ AssociationEnd[2..*] role ag_end 
+ Aggregation[1] role ag 
+end
+
 association class_feat between 
  Classifier[1] role type 
  Feature[0..*] role feat
@@ -101,12 +109,9 @@ composition feat_class between
  Feature[1..*] role features
 end   
 
-aggregation dep between
+
+associationclass op < Aggregation
+ between 
  Decorator[0..*] role decorator
  Component[1] role comp 
-end   
-
-association op between 
- Classifier[1] role type 
- Feature[0..*] role feat
 end 
