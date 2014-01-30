@@ -1,0 +1,107 @@
+-- This is a USE model of in class lab
+model UML
+ 
+class ModelElement 
+attributes 
+ name:String 
+ 
+end
+  
+ 
+class Classifier < ModelElement 
+end
+ 
+class Feature 
+attributes 
+ visibility:Visibility 
+end
+
+class Visibility
+end
+
+class Class < Classifier
+end
+
+class DataType < Classifier
+end
+
+class Interface < Classifier
+end
+
+class Attribute < Feature
+end
+
+class Operation < Feature
+end
+
+class AssociationEnd < Feature
+end
+
+class Association
+end
+
+class Parameter
+end
+
+class Component < Classifier
+operations
+	operation()
+end
+
+class ConcreteComponent < Component
+operations
+	operation()
+end
+
+class Decorator < Component
+attributes
+	component: Component
+operations
+	operation()
+end
+
+class ConcreteDecorator < Decorator
+operations
+	operation()
+end
+
+ 
+association classifier between 
+ Classifier[0..*] role generalizations 
+ Classifier[0..*] role specializations 
+end
+
+association class_interface between 
+ Class[0..*] role class
+ Interface[0..*] role implementedInterfaces 
+end 
+
+association parameter_classifier between 
+ Classifier[1] role type 
+ Parameter[0..*] role param 
+end
+
+association parameter_operation between 
+ Operation[1] role ops 
+ Parameter[0..*] role parameters 
+end    
+
+association associationend_ass between 
+ AssociationEnd[2..*] role as_end 
+ Association[1] role as 
+end
+
+association class_feat between 
+ Classifier[1] role type 
+ Feature[0..*] role feat
+end 
+
+composition feat_class between 
+ Classifier[1] role cls 
+ Feature[1..*] role features
+end   
+
+aggregation dep between
+ Decorator[0..*] role decorator
+ Component[1] role comp 
+end   
