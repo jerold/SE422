@@ -443,51 +443,51 @@
     <hidden>false</hidden>
   </edge>
   <edge type="BinaryEdge">
-    <source>Component</source>
-    <target>Decorator</target>
+    <source>Decorator</source>
+    <target>Component</target>
     <name>dep</name>
     <edgeproperty type="associationName" userDefined="false">
       <name>dep</name>
-      <x_coord>780.8515625</x_coord>
-      <y_coord>43.9375</y_coord>
+      <x_coord>789.3515625</x_coord>
+      <y_coord>43.4375</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="target" type="rolename" userDefined="false">
-      <name>decorator</name>
-      <x_coord>762.5625</x_coord>
-      <y_coord>46.0</y_coord>
+      <name>comp</name>
+      <x_coord>771.0</x_coord>
+      <y_coord>67.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="target" type="multiplicity" userDefined="false">
-      <name>*</name>
-      <x_coord>821.0</x_coord>
-      <y_coord>45.5</y_coord>
+      <name>1</name>
+      <x_coord>756.109375</x_coord>
+      <y_coord>67.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="source" type="rolename" userDefined="false">
-      <name>comp</name>
-      <x_coord>762.0</x_coord>
-      <y_coord>68.0</y_coord>
+      <name>decorator</name>
+      <x_coord>770.5625</x_coord>
+      <y_coord>46.0</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty kind="source" type="multiplicity" userDefined="false">
-      <name>1</name>
-      <x_coord>747.109375</x_coord>
-      <y_coord>68.0</y_coord>
+      <name>*</name>
+      <x_coord>829.0</x_coord>
+      <y_coord>45.5</y_coord>
       <hidden>false</hidden>
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>0</name>
-      <x_coord>760.0</x_coord>
-      <y_coord>32.0</y_coord>
+      <x_coord>827.0</x_coord>
+      <y_coord>84.0</y_coord>
       <hidden>false</hidden>
       <id>0</id>
       <specialid>1</specialid>
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>1</name>
-      <x_coord>819.0</x_coord>
-      <y_coord>84.0</y_coord>
+      <x_coord>769.0</x_coord>
+      <y_coord>31.0</y_coord>
       <hidden>false</hidden>
       <id>1</id>
       <specialid>2</specialid>
@@ -547,21 +547,43 @@
     <hidden>false</hidden>
   </edge>
   <edge type="Generalization">
-    <source>Classifier</source>
-    <target>ModelElement</target>
+    <source>Component</source>
+    <target>Operation</target>
     <name>Inheritance</name>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>0</name>
-      <x_coord>125.0</x_coord>
-      <y_coord>123.0</y_coord>
+      <x_coord>710.0</x_coord>
+      <y_coord>32.0</y_coord>
       <hidden>false</hidden>
       <id>0</id>
       <specialid>1</specialid>
     </edgeproperty>
     <edgeproperty type="WayPoint" userDefined="false">
       <name>1</name>
-      <x_coord>211.0</x_coord>
-      <y_coord>77.0</y_coord>
+      <x_coord>514.0</x_coord>
+      <y_coord>188.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="Generalization">
+    <source>ConcreteDecorator</source>
+    <target>Operation</target>
+    <name>Inheritance</name>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>801.0</x_coord>
+      <y_coord>183.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>525.0</x_coord>
+      <y_coord>200.0</y_coord>
       <hidden>false</hidden>
       <id>1</id>
       <specialid>2</specialid>
@@ -591,28 +613,6 @@
     <hidden>false</hidden>
   </edge>
   <edge type="Generalization">
-    <source>DataType</source>
-    <target>Classifier</target>
-    <name>Inheritance</name>
-    <edgeproperty type="WayPoint" userDefined="false">
-      <name>0</name>
-      <x_coord>149.0</x_coord>
-      <y_coord>197.0</y_coord>
-      <hidden>false</hidden>
-      <id>0</id>
-      <specialid>1</specialid>
-    </edgeproperty>
-    <edgeproperty type="WayPoint" userDefined="false">
-      <name>1</name>
-      <x_coord>110.0</x_coord>
-      <y_coord>150.0</y_coord>
-      <hidden>false</hidden>
-      <id>1</id>
-      <specialid>2</specialid>
-    </edgeproperty>
-    <hidden>false</hidden>
-  </edge>
-  <edge type="Generalization">
     <source>Attribute</source>
     <target>Feature</target>
     <name>Inheritance</name>
@@ -628,50 +628,6 @@
       <name>1</name>
       <x_coord>475.0</x_coord>
       <y_coord>114.0</y_coord>
-      <hidden>false</hidden>
-      <id>1</id>
-      <specialid>2</specialid>
-    </edgeproperty>
-    <hidden>false</hidden>
-  </edge>
-  <edge type="Generalization">
-    <source>ConcreteComponent</source>
-    <target>Component</target>
-    <name>Inheritance</name>
-    <edgeproperty type="WayPoint" userDefined="false">
-      <name>0</name>
-      <x_coord>700.0</x_coord>
-      <y_coord>92.0</y_coord>
-      <hidden>false</hidden>
-      <id>0</id>
-      <specialid>1</specialid>
-    </edgeproperty>
-    <edgeproperty type="WayPoint" userDefined="false">
-      <name>1</name>
-      <x_coord>727.0</x_coord>
-      <y_coord>32.0</y_coord>
-      <hidden>false</hidden>
-      <id>1</id>
-      <specialid>2</specialid>
-    </edgeproperty>
-    <hidden>false</hidden>
-  </edge>
-  <edge type="Generalization">
-    <source>Class</source>
-    <target>Classifier</target>
-    <name>Inheritance</name>
-    <edgeproperty type="WayPoint" userDefined="false">
-      <name>0</name>
-      <x_coord>63.0</x_coord>
-      <y_coord>162.0</y_coord>
-      <hidden>false</hidden>
-      <id>0</id>
-      <specialid>1</specialid>
-    </edgeproperty>
-    <edgeproperty type="WayPoint" userDefined="false">
-      <name>1</name>
-      <x_coord>80.0</x_coord>
-      <y_coord>150.0</y_coord>
       <hidden>false</hidden>
       <id>1</id>
       <specialid>2</specialid>
@@ -760,6 +716,138 @@
       <name>1</name>
       <x_coord>520.0</x_coord>
       <y_coord>114.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="Generalization">
+    <source>ConcreteComponent</source>
+    <target>Operation</target>
+    <name>Inheritance</name>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>645.0</x_coord>
+      <y_coord>134.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>525.0</x_coord>
+      <y_coord>189.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="Generalization">
+    <source>Classifier</source>
+    <target>ModelElement</target>
+    <name>Inheritance</name>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>125.0</x_coord>
+      <y_coord>123.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>211.0</x_coord>
+      <y_coord>77.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="Generalization">
+    <source>DataType</source>
+    <target>Classifier</target>
+    <name>Inheritance</name>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>149.0</x_coord>
+      <y_coord>197.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>110.0</x_coord>
+      <y_coord>150.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="Generalization">
+    <source>ConcreteComponent</source>
+    <target>Component</target>
+    <name>Inheritance</name>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>700.0</x_coord>
+      <y_coord>92.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>727.0</x_coord>
+      <y_coord>32.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="Generalization">
+    <source>Class</source>
+    <target>Classifier</target>
+    <name>Inheritance</name>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>63.0</x_coord>
+      <y_coord>162.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>80.0</x_coord>
+      <y_coord>150.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="Generalization">
+    <source>Decorator</source>
+    <target>Operation</target>
+    <name>Inheritance</name>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>789.0</x_coord>
+      <y_coord>128.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>525.0</x_coord>
+      <y_coord>194.0</y_coord>
       <hidden>false</hidden>
       <id>1</id>
       <specialid>2</specialid>

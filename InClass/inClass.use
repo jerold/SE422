@@ -101,12 +101,10 @@ composition feat_class between
  Feature[1..*] role features
 end   
 
-aggregation dep between
- Decorator[0..*] role decorator
- Component[1] role comp 
-end   
 
-association op between 
- Classifier[1] role type 
- Feature[0..*] role feat
-end 
+
+associationclass test < Association
+between
+	Component[1]
+	Decorator[1]
+end
