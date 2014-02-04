@@ -21,6 +21,8 @@ operations
  
  getName() 
  
+ getTotalCharge():Real
+ 
  getAmount(aRen:Rental):Real 
  begin 
  declare wrkCh:Real, m:Movie, pc:PriceCode,dy:Integer; 
@@ -79,6 +81,7 @@ operations
  result := self.daysRented; 
  end 
  
+ getCharge():Real 
  getMovie(): Movie 
  begin 
  result := self.movie; 
