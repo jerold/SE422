@@ -40,20 +40,23 @@ end
 class Association
 end
 
+class Aggregation < Association
+end
+
 class Parameter
 end
 
-class Component < Classifier
+class Component < Classifier , AssociationEnd
 operations
 	operation()
 end
 
-class ConcreteComponent < Component 
+class ConcreteComponent < Component
 operations
 	operation()
 end
 
-class Decorator < Component 
+class Decorator < Component, AssociationEnd
 attributes
 	component: Component
 operations
@@ -102,9 +105,17 @@ composition feat_class between
 end   
 
 
+<<<<<<< HEAD
 
 associationclass test < Association
 between
 	Component[1]
 	Decorator[1]
 end
+=======
+associationclass op < Aggregation
+ between 
+ Decorator[0..*] role decorator
+ Component[1] role component 
+end 
+>>>>>>> 499a675148705caeb32d344b0506e6d4b794c3ae
