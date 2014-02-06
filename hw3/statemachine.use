@@ -71,3 +71,10 @@ end
 -------------------------------------------------------------------------------
 --associations 
 -------------------------------------------------------------------------------
+
+association dispenserState between 
+	CoffeeDispenser [1] role coffeeDispenser 
+	CoffeeState [1] role coffeeState 
+	end 
+
+
