@@ -1,14 +1,29 @@
 -- read Z:\SE422\InClass\objects.x 
 -- NOTE: USE THE FULL PATH NAME TO THIS FILE 
--- This file creates 1 customer, 2 movies, and 2 rentals. It sets up 
--- associations between them, and finally calls the Statement() method 
--- for the customer. 
--- It assumes that Regular movies are coded as 0, New movies are 1, and 
--- Family movies are 2. 
+
+
+!create me : ModelElement
+!create feature :Feature 
+!create cl : Classifier 
+!create v : Visibility
+!create class :Class
+!create data_type :DataType
+!create interface :Interface
+!create attribute :Attribute
+!create operation :Operation
+!create association :Association
+!new  AssociationEnd('a1')
+!create aggregation :Aggregation
+!create parameter :Parameter
+
+
+!new ConcreteComponent('cc1')
+!new ConcreteDecorator('cd1')
  
-!create cc1:ConcreteComponent
-!create cd1:ConcreteDecorator 
 !insert (cd1,cc1) into op
+
+--!cc1 := a1
+--!cd1 := a1
  
 --!create m2:Movie 
 --!create r2:Rental 
