@@ -1,7 +1,9 @@
 model CoffeeDispenser
-/*
- * A simple class for a coffee dispenser.
- */
+
+-------------------------------------------------------------------------------
+--classes 
+-------------------------------------------------------------------------------
+
 class CoffeeDispenser
 	attributes
 		/* This attribute stores the money inserted into 
@@ -65,3 +67,7 @@ class CoffeeDispenser
 				enoughCoins -> noCoins	{ brew()	 }
 		end
 end
+
+-------------------------------------------------------------------------------
+--associations 
+-------------------------------------------------------------------------------
