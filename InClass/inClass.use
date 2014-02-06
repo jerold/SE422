@@ -1,13 +1,16 @@
 -- This is a USE model of in class lab
 model UML
- 
+
+
+-------------------------------------------------------------------------------
+--classes UML
+-------------------------------------------------------------------------------
+
 class ModelElement 
 attributes 
  name:String 
- 
 end
-  
- 
+   
 class Classifier < ModelElement 
 end
  
@@ -46,6 +49,12 @@ end
 class Parameter
 end
 
+
+-------------------------------------------------------------------------------
+--classes Decorator Pattern
+-------------------------------------------------------------------------------
+
+
 class Component < Classifier , AssociationEnd
 operations
 	operation()
@@ -68,7 +77,10 @@ operations
 	operation()
 end
 
- 
+-------------------------------------------------------------------------------
+--associations 
+-------------------------------------------------------------------------------
+
 association classifier between 
  Classifier[0..*] role generalizations 
  Classifier[0..*] role specializations 
@@ -104,18 +116,8 @@ composition feat_class between
  Feature[1..*] role features
 end   
 
-
-<<<<<<< HEAD
-
-associationclass test < Association
-between
-	Component[1]
-	Decorator[1]
-end
-=======
 associationclass op < Aggregation
  between 
  Decorator[0..*] role decorator
  Component[1] role component 
 end 
->>>>>>> 499a675148705caeb32d344b0506e6d4b794c3ae
