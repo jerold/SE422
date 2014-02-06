@@ -55,7 +55,7 @@ end
 -------------------------------------------------------------------------------
 
 
-class Component < Classifier , AssociationEnd
+class Component < Classifier 
 operations
 	operation()
 end
@@ -65,7 +65,7 @@ operations
 	operation()
 end
 
-class Decorator < Component, AssociationEnd
+class Decorator < Component
 attributes
 	component: Component
 operations
@@ -101,7 +101,7 @@ association parameter_operation between
  Parameter[0..*] role parameters 
 end    
 
-association associationend_ass between 
+association associationend_as between 
  AssociationEnd[2..*] role as_end 
  Association[1] role as 
 end
