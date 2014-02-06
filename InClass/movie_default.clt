@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<diagram_Layout version="4">
+  <diagramOptions>
+    <autolayout>false</autolayout>
+    <antialiasing>false</antialiasing>
+    <showassocnames>true</showassocnames>
+    <showattributes>true</showattributes>
+    <showmultiplicities>true</showmultiplicities>
+    <showoperations>true</showoperations>
+    <showrolenames>true</showrolenames>
+    <showgrid>false</showgrid>
+  </diagramOptions>
+  <node type="Class">
+    <name>Customer</name>
+    <x_coord>164.59367865635733</x_coord>
+    <y_coord>14.125908571805354</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <node type="Class">
+    <name>Movie</name>
+    <x_coord>462.030465857581</x_coord>
+    <y_coord>1.5829585848912018</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <node type="Class">
+    <name>Rental</name>
+    <x_coord>420.96114820094385</x_coord>
+    <y_coord>311.4680469939657</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <node type="Class">
+    <name>Charge</name>
+    <x_coord>19.66446606928588</x_coord>
+    <y_coord>277.1469348485423</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <node type="Enumeration">
+    <name>PriceCode</name>
+    <x_coord>-4.749758784167909</x_coord>
+    <y_coord>33.676151000795485</y_coord>
+    <hidden>false</hidden>
+  </node>
+  <edge type="BinaryEdge">
+    <source>Customer</source>
+    <target>Charge</target>
+    <name>customerCharges</name>
+    <edgeproperty type="associationName" userDefined="false">
+      <name>customerCharges</name>
+      <x_coord>96.1796875</x_coord>
+      <y_coord>185.671875</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="rolename" userDefined="false">
+      <name>charges</name>
+      <x_coord>76.0</x_coord>
+      <y_coord>261.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="multiplicity" userDefined="false">
+      <name>*</name>
+      <x_coord>72.0</x_coord>
+      <y_coord>261.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="rolename" userDefined="false">
+      <name>cust</name>
+      <x_coord>172.46875</x_coord>
+      <y_coord>200.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="multiplicity" userDefined="false">
+      <name>1</name>
+      <x_coord>205.0</x_coord>
+      <y_coord>200.5</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>203.0</x_coord>
+      <y_coord>127.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>74.0</x_coord>
+      <y_coord>273.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="BinaryEdge">
+    <source>Rental</source>
+    <target>Movie</target>
+    <name>movRental</name>
+    <edgeproperty type="associationName" userDefined="false">
+      <name>movRental</name>
+      <x_coord>515.0</x_coord>
+      <y_coord>207.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="rolename" userDefined="false">
+      <name>movie</name>
+      <x_coord>528.0</x_coord>
+      <y_coord>116.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="multiplicity" userDefined="false">
+      <name>1</name>
+      <x_coord>532.0</x_coord>
+      <y_coord>116.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="rolename" userDefined="false">
+      <name>movRentals</name>
+      <x_coord>494.0</x_coord>
+      <y_coord>295.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="multiplicity" userDefined="false">
+      <name>*</name>
+      <x_coord>490.0</x_coord>
+      <y_coord>295.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>492.0</x_coord>
+      <y_coord>307.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>530.0</x_coord>
+      <y_coord>99.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+  <edge type="BinaryEdge">
+    <source>Customer</source>
+    <target>Rental</target>
+    <name>custRentals</name>
+    <edgeproperty type="associationName" userDefined="false">
+      <name>custRentals</name>
+      <x_coord>347.1796875</x_coord>
+      <y_coord>205.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="rolename" userDefined="false">
+      <name>rentals</name>
+      <x_coord>406.640625</x_coord>
+      <y_coord>254.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="target" type="multiplicity" userDefined="false">
+      <name>*</name>
+      <x_coord>450.0</x_coord>
+      <y_coord>253.5</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="rolename" userDefined="false">
+      <name>renter</name>
+      <x_coord>304.0</x_coord>
+      <y_coord>200.0</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty kind="source" type="multiplicity" userDefined="false">
+      <name>1</name>
+      <x_coord>289.109375</x_coord>
+      <y_coord>200.5</y_coord>
+      <hidden>false</hidden>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>0</name>
+      <x_coord>302.0</x_coord>
+      <y_coord>127.0</y_coord>
+      <hidden>false</hidden>
+      <id>0</id>
+      <specialid>1</specialid>
+    </edgeproperty>
+    <edgeproperty type="WayPoint" userDefined="false">
+      <name>1</name>
+      <x_coord>448.0</x_coord>
+      <y_coord>307.0</y_coord>
+      <hidden>false</hidden>
+      <id>1</id>
+      <specialid>2</specialid>
+    </edgeproperty>
+    <hidden>false</hidden>
+  </edge>
+</diagram_Layout>
