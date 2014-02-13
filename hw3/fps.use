@@ -1,0 +1,131 @@
+model fps
+/*
+ * A simple class for a fps.
+ */
+class fps
+  attributes
+    amount : Integer init = 0
+    fpsState : State
+    noCoinsState : CoffeeState
+    hasCoinsState : CoffeeState
+    enoughCoinsState : CoffeeState
+
+     Attack, Panic, or 
+Die. 
+Think about th
+
+  operations
+    initInstances()
+    begin
+      declare noCoins1:noCoins;
+	  noCoins1 := new noCoins;
+      self.noCoinsState := noCoins1;
+      insert (self, noCoins1) into dispenserState;
+
+      declare hasCoins1:hasCoins;
+	  hasCoins1 := hasCoins;
+      self.hasCoinsState := hasCoins1;
+      insert (self, hasCoins1) into dispenserState;
+
+      declare enoughCoins1: enoughCoins;
+      self.enoughCoinsState := enoughCoins1;
+      insert (self, enoughCoins1) into dispenserState;
+
+      self.coffeeState := noCoins1;
+    end
+
+    accept(i : Integer)
+    begin
+      self.coffeeState.accept(i)
+    end
+
+    brew()
+    begin
+      self.coffeeState.brew()
+    end
+
+    reset()
+    begin
+      self.coffeeState.reset()
+    end
+
+  statemachines
+    /* This state machine describes the
+     * "lifecycle" of the coffee dispenser.
+     */
+    psm Usage
+      states
+        -- The start node
+        startUp:initial
+        -- The initial state after creation.
+        noCoins    [amount = 0]
+        -- Some coins were inserted, but not enough.
+        hasCoins     [amount > 0 and amount < 100]
+        -- Enough coins, ready to brew.
+        enoughCoins [amount >= 100]
+      transitions
+        -- Define the first state after creation.
+        startUp -> noCoins     { create }
+        -- A coin was inserted, but it wasn't enough.
+        noCoins -> hasCoins  { [i > 0 and amount < 100] accept() }
+        -- Enough money was inserted.
+        noCoins -> enoughCoins { [i > 0 and amount >= 100] accept() }
+        -- Abort
+        hasCoins -> noCoins   { reset() }
+        -- Enough money was inserted.
+        hasCoins -> enoughCoins { [i + amount >= 100] accept() }
+        -- Another coin was inserted, but it wasn't enough.
+        hasCoins -> hasCoins    { [i + amount < 100] accept() }
+        -- Abort
+        enoughCoins -> noCoins  { reset() }
+        -- Brew coffe, no change ;-)
+        enoughCoins -> noCoins  { brew()   }
+    end
+end
+
+class CoffeeState
+  operations
+    accept(i : Integer)
+    begin
+      self.coffeeDispenser.amount := self.coffeeDispenser.amount + i;
+    end
+
+    brew()
+    begin
+      self.coffeeDispenser.amount := 0;
+    end
+
+    reset()
+    begin
+      self.coffeeDispenser.amount := 0;
+    end
+end
+
+class noCoins < CoffeeState
+  operations
+    accept(i : Integer)
+    brew()
+    begin
+      
+    end
+    reset()
+end
+
+class hasCoins < CoffeeState
+  operations
+    accept(i : Integer)
+    brew()
+    reset()
+end
+
+class enoughCoins < CoffeeState
+  operations
+    accept(i : Integer)
+    brew()
+    reset()
+end
+
+association dispenserState between
+  CoffeeDispenser[1] role coffeeDispenser
+  CoffeeState[1] role coffeeState
+end
