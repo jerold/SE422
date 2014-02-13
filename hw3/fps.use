@@ -6,13 +6,12 @@ class fps
   attributes
     amount : Integer init = 0
     fpsState : State
-    noCoinsState : CoffeeState
-    hasCoinsState : CoffeeState
-    enoughCoinsState : CoffeeState
+    attackState :  Attack
+    neutralState : Neutral
+    panicState :  Panic
+    dieState : Die
 
-     Attack, Panic, or 
-Die. 
-Think about th
+     
 
   operations
     initInstances()
