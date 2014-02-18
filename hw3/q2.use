@@ -11,8 +11,10 @@ class Character
 		xCoordinate : Integer
 		yCoordinate : Integer
 		attackRange : Integer
-		weaponStrength : Integer
+		weaponStrength : Integer init = 0
+		target : Character
 		charState : CharacterState
+		playerCharState : CharacterState
 		neutralCharState : CharacterState
 		attackCharState : CharacterState
 		panicCharState : CharacterState
@@ -21,23 +23,41 @@ class Character
 	operations
 		initInstances()
 		begin
-			declare neutralCharState1:CharacterState,
-					 attackCharState1:CharacterState,
-					  panicCharState1:CharacterState,
-						dieCharState1:CharacterState;
-			self.initCharacter()
+			declare playerCharState1:CharacterState,
+				   neutralCharState1:CharacterState,
+				    attackCharState1:CharacterState,
+				     panicCharState1:CharacterState,
+				       dieCharState1:CharacterState;
 
+			playerCharState1 := new PlayerState;
+			self.playerCharState := playerCharState1;
+			insert(self, playerCharState1) into charState;
+
+			neutralCharState1 := new NeutralState;
+			self.neutralCharState := neutralCharState1;
+			insert(self, neutralCharState1) into charState;
+
+			attackCharState1 := new AttackState;
+			self.attackCharState := attackCharState1;
+			insert(self, attackCharState1) into charState;
+
+			panicCharState1 := new PanicState;
+			self.panicCharState := panicCharState1;
+			insert(self, panicCharState1) into charState;
+
+			dieCharState1 := new DieState;
+			self.dieCharState := dieCharState1;
+			insert(self, dieCharState1) into charState;
+
+			self.initCharacter();
 		end
 
 		/*
 		 * Default values for a game object
 		 */
-		initCharacter(xCoord : Integer, yCoord : Integer, hp : Integer, ap : Integer)
+		initCharacter()
 		begin
-			self.xCoordinate := xCoord;
-			self.yCoordinate := yCoord;
-			self.health := hp;
-			self.weaponStrength := ap;
+			self.charState := self.neutralCharState;
 		end
 
 		/*
@@ -45,35 +65,55 @@ class Character
 		 */
 		update()
 		begin
-			self.charState.update()
+			self.charState.update();
 		end
 
 		/*
 		 * Turn in opposite direction from enemy and get to running
 		 */
-		doMove(enemy : Character, runningAway : Boolean)
+		doMove(runningAway : Boolean)
 		begin
-			let velocity := maxVelocity;
-			if runningAway then velocity := -maxVelocity endif
+			declare velocity : Integer;
+			if runningAway then
+				velocity := -self.maxVelocity
+			else 
+				velocity := self.maxVelocity
+			end;
 
-			if self.xCoordinate < self.xCoordinate
-			then
-				self.moveBy(velocity, 0)
+			if self.xCoordinate < self.target.xCoordinate then
+				self.moveBy(velocity, 0);
 			else
-				if self.xCoordinate > self.xCoordinate
-				then
-					self.moveBy(-velocity, 0)
-				endif
-			endif
-			if self.yCoordinate < self.yCoordinate
-			then
-				self.moveBy(0, velocity)
+				if self.xCoordinate > self.target.xCoordinate then
+					self.moveBy(-velocity, 0);
+				end;
+			end;
+			if self.yCoordinate < self.target.yCoordinate then
+				self.moveBy(0, velocity);
 			else
-				if self.yCoordinate > self.yCoordinate
-				then
-					self.moveBy(0, -velocity)
-				endif
-			endif
+				if self.yCoordinate > self.target.yCoordinate then
+					self.moveBy(0, -velocity);
+				end;
+			end;
+		end
+
+		/*
+		 * Pretty self documenting here...
+		 */
+		fight()
+		begin
+			if self.canAttack() then
+				self.doAttack();
+			else
+				self.doMove(false);
+			end;
+		end
+
+		/*
+		 * Pretty self documenting here...
+		 */
+		flee()
+		begin
+			self.doMove(true);
 		end
 
 		/*
@@ -97,37 +137,33 @@ class Character
 		/*
 		 * Characters can only attack enemies within range
 		 */
-		canAttack(enemy : Character)
+		canAttack()
 		begin
-			if self.xCoordinate + attackRange > enemy.xCoordinate
-			then
-				if self.xCoordinate - attackRange < enemy.xCoordinate
-				then
-					if self.yCoordinate + attackRange > enemy.yCoordinate
-					then
-						if self.yCoordinate - attackRange < enemy.yCoordinate
-						then
+			if self.xCoordinate + attackRange > self.target.xCoordinate then
+				if self.xCoordinate - attackRange < self.target.xCoordinate then
+					if self.yCoordinate + attackRange > self.target.yCoordinate then
+						if self.yCoordinate - attackRange < self.target.yCoordinate then
 							result := true;
 						else
 							result := false;
-						endif
+						end;
 					else
 						result := false;
-					endif	
+					end;	
 				else
 					result := false;
-				endif
+				end;
 			else
 				result := false;
-			endif
+			end;
 		end
 
 		/*
 		 * Hit that dude
 		 */
-		doAttack(enemy : Character)
+		doAttack()
 		begin
-			enemy.takeHit(self.weaponStrength)
+			self.target.takeHit(self.weaponStrength);
 		end
 
 		/*
@@ -135,7 +171,7 @@ class Character
 		 */
 		takeHit(damage : Integer)
 		begin
-			self.health := self.health - damage
+			self.health := self.health - damage;
 		end
 
 	statemachines
@@ -143,39 +179,85 @@ class Character
 		 * Lifecycle of an FPT character
 		 */
 		psm Usage
-			state
+			states
 				startUp:initial
-				neutral []
-				attack []
-				panic []
-				die []
+				neutral [self.target.health <= 0]
+				attack [self.target.health > 0 and (self.target.weaponStrength < self.health or self.target.health <= self.weaponStrength)]
+				panic [self.target.health > 0 and self.target.weaponStrength >= self.health and self.target.health > self.weaponStrength]
+				die [self.health <= 0]
 			transitions
 				startUp -> neutral { create }
 
-				neutral -> attack
-				neutral -> panic
-				neutral -> die
+				neutral -> attack { [self.target.weaponStrength < self.health] update() }
+				neutral -> panic { [self.target.weaponStrength >= self.health] update() }
+				neutral -> die { [self.health <= 0] update() }
 
-				attack -> neutral
-				attack -> panic
-				attack -> die
+				attack -> neutral { [self.target.health <= 0] update() }
+				attack -> panic { [self.target.weaponStrength >= self.health and self.target.health > self.weaponStrength] update() }
+				attack -> die { [self.health <= 0] update() }
 
-				panic -> neutral
-				panic -> attack
-				panic -> die
+				panic -> neutral { [self.target.health <= 0] update() }
+				panic -> attack { [self.target.health <= self.weaponStrength] update() }
+				panic -> die { [self.health <= 0] update() }
 		end
 end
 
+class PlayerCharacter < Character
+	operations
+		/*
+		 * Default values for a game object
+		 */
+		initCharacter()
+		begin
+			self.name := 'The Player';
+			self.charState := self.playerCharState;
+			self.xCoordinate := 0;
+			self.yCoordinate := 0;
+			self.health := 100;
+			self.weaponStrength := 10;
+		end
+end
+
+class NonPlayerCharacter < Character
+	operations
+		/*
+		 * Default values for a game object
+		 */
+		initCharacter()
+		begin
+			self.name := 'NPC';
+			self.charState := self.neutralCharState;
+			self.xCoordinate := 50;
+			self.yCoordinate := 50;
+			self.health := 30;
+			self.weaponStrength := 10;
+		end
+
+		selectTarget()
+		begin
+			self.target := PlayerCharacter.allInstances -> first();
+		end
+end
+
+
+/*
+ * Abstract State
+ */
 class CharacterState
 	operations
-		update()
-		tryAttack()
+		update();
 end
 
 /*
- * Player does not transition
+ * Player does not transition, but does regenerate health
  */
-class NeutralState < CharacterState
+class PlayerState < CharacterState
+	operations
+		update();
+		begin
+			super.update();
+			self.character.health := self.character.health + 1;
+		end
 end
 
 /*
@@ -188,14 +270,38 @@ end
  * may also DIE if hit to death
  */
 class NeutralState < CharacterState
+	operations
+		update();
+		begin
+			if self.character.target.health > 0 then
+				if self.character.target.weaponStrength < self.character.health then
+					self.character.charState := self.character.attackCharState;
+				else
+					self.character.charState := self.character.panicCharState;
+				end;
+			end;
+		end
 end
 
 /*
  * IF player dies become NEUTRAL
  * ELSE IF health drops below enemies weapon strength or 10 PANIC
- * ELSE continue to ATTACH
+ * ELSE continue to ATTACK
  */
 class AttackState < CharacterState
+	operations
+		update();
+		begin
+			if self.character.target.health <= 0 then
+				self.character.charState := self.character.neutralCharState;
+			else
+				if self.character.target.weaponStrength < self.character.health or self.character.target.health <= self.character.weaponStrength then
+					self.character.fight();
+				else
+					self.character.charState := self.character.panicCharState;
+				end;
+			end;
+		end
 end
 
 /*
@@ -204,6 +310,19 @@ end
  * ELSE continue to PANIC
  */
 class PanicState < CharacterState
+	operations
+		update();
+		begin
+			if self.character.target.health <= 0 then
+				self.character.charState := self.character.neutralCharState;
+			else
+				if self.character.target.health <= self.character.weaponStrength then
+					self.character.charState := self.character.attackCharState;
+				else
+					self.character.flee();
+				end;
+			end;
+		end
 end
 
 /*
@@ -213,4 +332,13 @@ class DieState < CharacterState
 end
 
 
+association charState between
+  Character[1] role character
+  CharacterState[1] role characterState
+end
+
+association isTargeting between
+  Character[1] role character
+  Character[1] role target
+end
 
