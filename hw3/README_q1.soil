@@ -1,0 +1,29 @@
+-- 1. Create the Coffee Dispenser
+
+!new CoffeeDispenser('cd')
+!cd.initInstances()
+
+-- 2. Flex noCoins State
+--    * attempting to brew should do nothing
+--    * reseting will reset the machine, but state remains noCoins
+--    * accepting an Integer (0 < amount < 100) transitions to hasCoins
+!cd.brew()
+!cd.reset()
+!cd.accept(10)
+
+-- 3. Flex hasCoins State
+--    * attempting to brew should do nothing
+--    * reseting will reset the machine, and transition to noCoins
+--    * accepting will not transition to enoughCoins until amount >= 100
+!cd.brew()
+!cd.reset()
+!cd.accept(50)
+!cd.accept(50)
+
+-- 4. Flex enoughCoins State
+--    * reseting will reset the machine, and transition to noCoins
+--    * accepting an Integer (amount > 100) from noCoins will transitions to enoughCoins
+--    * brewing will set amount to 0 and transition to noCoins
+!cd.reset()
+!cd.accept(100)
+!cd.brew()
