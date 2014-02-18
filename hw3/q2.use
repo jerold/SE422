@@ -1,0 +1,216 @@
+model FPS
+
+/*
+ * FPS with state machine
+ */
+class Character
+	attributes
+		name : String init = 'Unknown'
+		health : Integer init = 0
+		maxVelocity : Integer init = 1
+		xCoordinate : Integer
+		yCoordinate : Integer
+		attackRange : Integer
+		weaponStrength : Integer
+		charState : CharacterState
+		neutralCharState : CharacterState
+		attackCharState : CharacterState
+		panicCharState : CharacterState
+		dieCharState : CharacterState
+
+	operations
+		initInstances()
+		begin
+			declare neutralCharState1:CharacterState,
+					 attackCharState1:CharacterState,
+					  panicCharState1:CharacterState,
+						dieCharState1:CharacterState;
+			self.initCharacter()
+
+		end
+
+		/*
+		 * Default values for a game object
+		 */
+		initCharacter(xCoord : Integer, yCoord : Integer, hp : Integer, ap : Integer)
+		begin
+			self.xCoordinate := xCoord;
+			self.yCoordinate := yCoord;
+			self.health := hp;
+			self.weaponStrength := ap;
+		end
+
+		/*
+		 * Called for each Character each turn by the kernal
+		 */
+		update()
+		begin
+			self.charState.update()
+		end
+
+		/*
+		 * Turn in opposite direction from enemy and get to running
+		 */
+		doMove(enemy : Character, runningAway : Boolean)
+		begin
+			let velocity := maxVelocity;
+			if runningAway then velocity := -maxVelocity endif
+
+			if self.xCoordinate < self.xCoordinate
+			then
+				self.moveBy(velocity, 0)
+			else
+				if self.xCoordinate > self.xCoordinate
+				then
+					self.moveBy(-velocity, 0)
+				endif
+			endif
+			if self.yCoordinate < self.yCoordinate
+			then
+				self.moveBy(0, velocity)
+			else
+				if self.yCoordinate > self.yCoordinate
+				then
+					self.moveBy(0, -velocity)
+				endif
+			endif
+		end
+
+		/*
+		 * Delta move method
+		 */
+		moveBy(dx : Integer, dy : Integer)
+		begin
+			self.xCoordinate := self.xCoordinate + dx;
+			self.yCoordinate := self.yCoordinate + dy;
+		end
+
+		/*
+		 * Teleport move method
+		 */
+		moveTo(nx : Integer, ny : Integer)
+		begin
+			self.xCoordinate := nx;
+			self.yCoordinate := ny;
+		end
+
+		/*
+		 * Characters can only attack enemies within range
+		 */
+		canAttack(enemy : Character)
+		begin
+			if self.xCoordinate + attackRange > enemy.xCoordinate
+			then
+				if self.xCoordinate - attackRange < enemy.xCoordinate
+				then
+					if self.yCoordinate + attackRange > enemy.yCoordinate
+					then
+						if self.yCoordinate - attackRange < enemy.yCoordinate
+						then
+							result := true;
+						else
+							result := false;
+						endif
+					else
+						result := false;
+					endif	
+				else
+					result := false;
+				endif
+			else
+				result := false;
+			endif
+		end
+
+		/*
+		 * Hit that dude
+		 */
+		doAttack(enemy : Character)
+		begin
+			enemy.takeHit(self.weaponStrength)
+		end
+
+		/*
+		 * Lets be honest, this is why npcs exist
+		 */
+		takeHit(damage : Integer)
+		begin
+			self.health := self.health - damage
+		end
+
+	statemachines
+		/*
+		 * Lifecycle of an FPT character
+		 */
+		psm Usage
+			state
+				startUp:initial
+				neutral []
+				attack []
+				panic []
+				die []
+			transitions
+				startUp -> neutral { create }
+
+				neutral -> attack
+				neutral -> panic
+				neutral -> die
+
+				attack -> neutral
+				attack -> panic
+				attack -> die
+
+				panic -> neutral
+				panic -> attack
+				panic -> die
+		end
+end
+
+class CharacterState
+	operations
+		update()
+		tryAttack()
+end
+
+/*
+ * Player does not transition
+ */
+class NeutralState < CharacterState
+end
+
+/*
+ * Check for an player Character
+ * IF player exists
+ * 		IF players weaponStrength < health ATTACK
+ * 		ELSE PANIC
+ * ELSE continue to be NEUTRAL
+ *
+ * may also DIE if hit to death
+ */
+class NeutralState < CharacterState
+end
+
+/*
+ * IF player dies become NEUTRAL
+ * ELSE IF health drops below enemies weapon strength or 10 PANIC
+ * ELSE continue to ATTACH
+ */
+class AttackState < CharacterState
+end
+
+/*
+ * IF player dies become NEUTRAL
+ * ELSE IF players health drops below weaponStrength ATTACK
+ * ELSE continue to PANIC
+ */
+class PanicState < CharacterState
+end
+
+/*
+ * I guess they could sort their baseball cards in heaven...
+ */
+class DieState < CharacterState
+end
+
+
+

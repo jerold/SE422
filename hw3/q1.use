@@ -64,16 +64,16 @@ class CoffeeDispenser
         -- Define the first state after creation.
         startUp -> noCoins     { create }
 
-        -- A coin was inserted, but it wasn't enough.
+        -- A coin was inserted, but it wasnt enough.
         noCoins -> hasCoins  { [i > 0 and i + amount < 100] accept() }
         -- Enough money was inserted.
         noCoins -> enoughCoins { [i + amount >= 100] accept() }
-        -- I can't let you brew that star fox
+        -- I cant let you brew that star fox
         noCoins -> noCoins   { brew() }
-        -- I can't let you brew that star fox
+        -- I cant let you brew that star fox
         noCoins -> noCoins   { reset() }
 
-        -- Another coin was inserted, but it wasn't enough.
+        -- Another coin was inserted, but it wasnt enough.
         hasCoins -> hasCoins    { [i + amount < 100] accept() }
         -- Enough money was inserted.
         hasCoins -> enoughCoins { [i + amount >= 100] accept() }
@@ -82,7 +82,7 @@ class CoffeeDispenser
         -- Abort
         hasCoins -> noCoins   { reset() }
 
-        -- Sure, we'll take your money
+        -- Sure, well take your money
         enoughCoins -> enoughCoins  { accept() }
         -- Abort
         enoughCoins -> noCoins  { reset() }
