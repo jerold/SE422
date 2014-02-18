@@ -14,17 +14,15 @@ class fps
   operations
     initInstances()
     begin
-      declare attack1:attack;
+      declare attack1:attack , neutral1 : neutral , panic1 : Panic;
 	   attack1 := new attack;
       self.attackState := attack1;
       insert (self, attack1) into dispenserState;
 
-      declare neutral1 : neutral;
-	  neutral1 := new neutral;
+	  neutral1 := neutral;
       self.neutralState := neutral1;
-      insert (self, neutralState) into dispenserState;
+      insert (self, neutral1) into dispenserState;
 
-      declare panic1 Panic;
       panic1 := new Panic;
       self.PanicState := panic1;
       insert (self, panicState) into dispenserState;
@@ -125,5 +123,5 @@ end
 
 association dispenserState between
   CoffeeDispenser[1] role coffeeDispenser
-  fpsState[1] role fpsState
+  State[1] role fpsState
 end

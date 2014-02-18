@@ -14,21 +14,21 @@ class CoffeeDispenser
   operations
     initInstances()
     begin
-      declare noCoins1:noCoins;
-	  noCoins1 := new noCoins;
+      declare noCoins1:NoCoins, hasCoins1:HasCoins, enoughCoins1:EnoughCoins;
+
+      noCoins1 := new NoCoins;
       self.noCoinsState := noCoins1;
-      insert (self, noCoins1) into dispenserState;
+      insert(self, noCoins1) into dispenserState;
 
-      declare hasCoins1:hasCoins;
-	  hasCoins1 := hasCoins;
+      hasCoins1 := new HasCoins;
       self.hasCoinsState := hasCoins1;
-      insert (self, hasCoins1) into dispenserState;
+      insert(self, hasCoins1) into dispenserState;
 
-      declare enoughCoins1: enoughCoins;
+      enoughCoins1 := new EnoughCoins;
       self.enoughCoinsState := enoughCoins1;
-      insert (self, enoughCoins1) into dispenserState;
+      insert(self, enoughCoins1) into dispenserState;
 
-      self.coffeeState := noCoins1;
+      self.coffeeState := noCoins1
     end
 
     accept(i : Integer)
@@ -63,20 +63,31 @@ class CoffeeDispenser
       transitions
         -- Define the first state after creation.
         startUp -> noCoins     { create }
+
         -- A coin was inserted, but it wasn't enough.
-        noCoins -> hasCoins  { [i > 0 and amount < 100] accept() }
+        noCoins -> hasCoins  { [i > 0 and i + amount < 100] accept() }
         -- Enough money was inserted.
-        noCoins -> enoughCoins { [i > 0 and amount >= 100] accept() }
-        -- Abort
-        hasCoins -> noCoins   { reset() }
-        -- Enough money was inserted.
-        hasCoins -> enoughCoins { [i + amount >= 100] accept() }
+        noCoins -> enoughCoins { [i + amount >= 100] accept() }
+        -- I can't let you brew that star fox
+        noCoins -> noCoins   { brew() }
+        -- I can't let you brew that star fox
+        noCoins -> noCoins   { reset() }
+
         -- Another coin was inserted, but it wasn't enough.
         hasCoins -> hasCoins    { [i + amount < 100] accept() }
+        -- Enough money was inserted.
+        hasCoins -> enoughCoins { [i + amount >= 100] accept() }
+        -- More money was inserted.
+        hasCoins -> hasCoins   { brew() }
+        -- Abort
+        hasCoins -> noCoins   { reset() }
+
+        -- Sure, we'll take your money
+        enoughCoins -> enoughCoins  { accept() }
         -- Abort
         enoughCoins -> noCoins  { reset() }
         -- Brew coffe, no change ;-)
-        enoughCoins -> noCoins  { brew()   }
+        enoughCoins -> noCoins  { brew() }
     end
 end
 
@@ -85,41 +96,38 @@ class CoffeeState
     accept(i : Integer)
     begin
       self.coffeeDispenser.amount := self.coffeeDispenser.amount + i;
+      if i > 0 and self.coffeeDispenser.amount < 100 then
+        self.coffeeDispenser.coffeeState := self.coffeeDispenser.hasCoinsState;
+      end;
+      if i > 0 and self.coffeeDispenser.amount >= 100 then
+        self.coffeeDispenser.coffeeState := self.coffeeDispenser.enoughCoinsState;
+      end;
     end
 
+    brew()
+    begin
+    end
+
+    reset()
+    begin
+      self.coffeeDispenser.amount := 0;
+      self.coffeeDispenser.coffeeState := self.coffeeDispenser.noCoinsState;
+    end
+end
+
+class NoCoins < CoffeeState
+end
+
+class HasCoins < CoffeeState
+end
+
+class EnoughCoins < CoffeeState
+  operations
     brew()
     begin
       self.coffeeDispenser.amount := 0;
+      self.coffeeDispenser.coffeeState := self.coffeeDispenser.noCoinsState;
     end
-
-    reset()
-    begin
-      self.coffeeDispenser.amount := 0;
-    end
-end
-
-class noCoins < CoffeeState
-  operations
-    accept(i : Integer)
-    brew()
-    begin
-      
-    end
-    reset()
-end
-
-class hasCoins < CoffeeState
-  operations
-    accept(i : Integer)
-    brew()
-    reset()
-end
-
-class enoughCoins < CoffeeState
-  operations
-    accept(i : Integer)
-    brew()
-    reset()
 end
 
 association dispenserState between
