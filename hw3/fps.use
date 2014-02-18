@@ -1,49 +1,50 @@
-model CoffeeDispenser
+model fps
 /*
- * A simple class for a coffee dispenser.
- * Taken directly from http://sourceforge.net/apps/mediawiki/useocl/index.php?title=Protocol_State_Machines
+ * A simple class for a fps.
  */
-class CoffeeDispenser
+class fps
   attributes
     amount : Integer init = 0
-    coffeeState : CoffeeState
-    noCoinsState : CoffeeState
-    hasCoinsState : CoffeeState
-    enoughCoinsState : CoffeeState
+    fpsState : State
+    attackState : State
+    neutralState : State
+    panicState : State
+    dieState : State
 
   operations
     initInstances()
     begin
-      declare noCoins1:noCoins;
-	  noCoins1 := new noCoins;
-      self.noCoinsState := noCoins1;
-      insert (self, noCoins1) into dispenserState;
+      declare attack1:attack;
+	   attack1 := new attack;
+      self.attackState := attack1;
+      insert (self, attack1) into dispenserState;
 
-      declare hasCoins1:hasCoins;
-	  hasCoins1 := hasCoins;
-      self.hasCoinsState := hasCoins1;
-      insert (self, hasCoins1) into dispenserState;
+      declare neutral1 : neutral;
+	  neutral1 := new neutral;
+      self.neutralState := neutral1;
+      insert (self, neutralState) into dispenserState;
 
-      declare enoughCoins1: enoughCoins;
-      self.enoughCoinsState := enoughCoins1;
-      insert (self, enoughCoins1) into dispenserState;
+      declare panic1 Panic;
+      panic1 := new Panic;
+      self.PanicState := panic1;
+      insert (self, panicState) into dispenserState;
 
-      self.coffeeState := noCoins1;
+      self.fpsState := attack1;
     end
 
     accept(i : Integer)
     begin
-      self.coffeeState.accept(i)
+      self.fpsState.accept(i)
     end
 
     brew()
     begin
-      self.coffeeState.brew()
+      self.fpsState.brew()
     end
 
     reset()
     begin
-      self.coffeeState.reset()
+      self.fpsState.reset()
     end
 
   statemachines
@@ -57,30 +58,30 @@ class CoffeeDispenser
         -- The initial state after creation.
         noCoins    [amount = 0]
         -- Some coins were inserted, but not enough.
-        hasCoins     [amount > 0 and amount < 100]
+        neutral     [amount > 0 and amount < 100]
         -- Enough coins, ready to brew.
-        enoughCoins [amount >= 100]
+        Panic [amount >= 100]
       transitions
         -- Define the first state after creation.
         startUp -> noCoins     { create }
         -- A coin was inserted, but it wasn't enough.
-        noCoins -> hasCoins  { [i > 0 and amount < 100] accept() }
+        noCoins -> neutral  { [i > 0 and amount < 100] accept() }
         -- Enough money was inserted.
-        noCoins -> enoughCoins { [i > 0 and amount >= 100] accept() }
+        noCoins -> Panic { [i > 0 and amount >= 100] accept() }
         -- Abort
-        hasCoins -> noCoins   { reset() }
+        neutral -> noCoins   { reset() }
         -- Enough money was inserted.
-        hasCoins -> enoughCoins { [i + amount >= 100] accept() }
+        neutral -> Panic { [i + amount >= 100] accept() }
         -- Another coin was inserted, but it wasn't enough.
-        hasCoins -> hasCoins    { [i + amount < 100] accept() }
+        neutral -> neutral    { [i + amount < 100] accept() }
         -- Abort
-        enoughCoins -> noCoins  { reset() }
+        Panic -> noCoins  { reset() }
         -- Brew coffe, no change ;-)
-        enoughCoins -> noCoins  { brew()   }
+        Panic -> noCoins  { brew()   }
     end
 end
 
-class CoffeeState
+class State
   operations
     accept(i : Integer)
     begin
@@ -98,7 +99,7 @@ class CoffeeState
     end
 end
 
-class noCoins < CoffeeState
+class attack < State
   operations
     accept(i : Integer)
     brew()
@@ -108,14 +109,14 @@ class noCoins < CoffeeState
     reset()
 end
 
-class hasCoins < CoffeeState
+class neutral < State
   operations
     accept(i : Integer)
     brew()
     reset()
 end
 
-class enoughCoins < CoffeeState
+class Panic < State
   operations
     accept(i : Integer)
     brew()
@@ -124,5 +125,5 @@ end
 
 association dispenserState between
   CoffeeDispenser[1] role coffeeDispenser
-  CoffeeState[1] role coffeeState
+  fpsState[1] role fpsState
 end
