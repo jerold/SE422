@@ -69,6 +69,14 @@ class Character
 		end
 
 		/*
+		 * Means of fetching a new target for player and npcs
+		 */
+		setTarget()
+		begin
+			self.target := Character.allInstances->select(p:Character | p.name <> self.name and p.health > 0)->asSequence()->first();
+		end
+
+		/*
 		 * Turn in opposite direction from enemy and get to running
 		 */
 		doMove(runningAway : Boolean)
@@ -97,26 +105,6 @@ class Character
 		end
 
 		/*
-		 * Pretty self documenting here...
-		 */
-		fight()
-		begin
-			if self.canAttack() then
-				self.doAttack();
-			else
-				self.doMove(false);
-			end;
-		end
-
-		/*
-		 * Pretty self documenting here...
-		 */
-		flee()
-		begin
-			self.doMove(true);
-		end
-
-		/*
 		 * Delta move method
 		 */
 		moveBy(dx : Integer, dy : Integer)
@@ -135,27 +123,11 @@ class Character
 		end
 
 		/*
-		 * Characters can only attack enemies within range
+		 * Lets be honest, this is why npcs exist
 		 */
-		canAttack()
+		takeHit(damage : Integer)
 		begin
-			if self.xCoordinate + attackRange > self.target.xCoordinate then
-				if self.xCoordinate - attackRange < self.target.xCoordinate then
-					if self.yCoordinate + attackRange > self.target.yCoordinate then
-						if self.yCoordinate - attackRange < self.target.yCoordinate then
-							result := true;
-						else
-							result := false;
-						end;
-					else
-						result := false;
-					end;	
-				else
-					result := false;
-				end;
-			else
-				result := false;
-			end;
+			self.health := self.health - damage;
 		end
 
 		/*
@@ -167,12 +139,43 @@ class Character
 		end
 
 		/*
-		 * Lets be honest, this is why npcs exist
+		 * Characters can only attack enemies within range
 		 */
-		takeHit(damage : Integer)
+		canAttack(): Boolean
 		begin
-			self.health := self.health - damage;
+			declare retVal : Boolean;
+			retVal := false;
+			if self.xCoordinate + self.attackRange > self.target.xCoordinate and
+			   self.xCoordinate - self.attackRange < self.target.xCoordinate and
+			   self.yCoordinate + self.attackRange > self.target.yCoordinate and
+			   self.yCoordinate - self.attackRange < self.target.yCoordinate then
+				retVal := true
+			end;
+			result := retVal;
 		end
+
+		/*
+		 * Pretty self documenting here...
+		 */
+		fight()
+		begin
+			declare canAtck : Boolean;
+			canAtck := self.canAttack();
+			if canAtck then
+				self.doAttack();
+			else
+				self.doMove(false);
+			end;
+		end
+
+		/*
+		 * Pretty self documenting here...
+		 */
+		flee()
+		begin
+			self.doMove(true);
+		end
+
 
 	statemachines
 		/*
@@ -181,6 +184,7 @@ class Character
 		psm Usage
 			states
 				startUp:initial
+				player [self.name = 'The Player']
 				neutral [self.target.health <= 0]
 				attack [self.target.health > 0 and (self.target.weaponStrength < self.health or self.target.health <= self.weaponStrength)]
 				panic [self.target.health > 0 and self.target.weaponStrength >= self.health and self.target.health > self.weaponStrength]
@@ -188,6 +192,7 @@ class Character
 			transitions
 				startUp -> neutral { create }
 
+				neutral -> player { [self.name = 'The Player'] initCharacter() }
 				neutral -> attack { [self.target.weaponStrength < self.health] update() }
 				neutral -> panic { [self.target.weaponStrength >= self.health] update() }
 				neutral -> die { [self.health <= 0] update() }
@@ -231,11 +236,7 @@ class NonPlayerCharacter < Character
 			self.yCoordinate := 50;
 			self.health := 30;
 			self.weaponStrength := 10;
-		end
-
-		selectTarget()
-		begin
-			self.target := PlayerCharacter.allInstances -> first();
+			self.setTarget();
 		end
 end
 
@@ -245,7 +246,9 @@ end
  */
 class CharacterState
 	operations
-		update();
+		update()
+		begin
+		end
 end
 
 /*
@@ -253,9 +256,8 @@ end
  */
 class PlayerState < CharacterState
 	operations
-		update();
+		update()
 		begin
-			super.update();
 			self.character.health := self.character.health + 1;
 		end
 end
@@ -271,7 +273,7 @@ end
  */
 class NeutralState < CharacterState
 	operations
-		update();
+		update()
 		begin
 			if self.character.target.health > 0 then
 				if self.character.target.weaponStrength < self.character.health then
@@ -290,7 +292,7 @@ end
  */
 class AttackState < CharacterState
 	operations
-		update();
+		update()
 		begin
 			if self.character.target.health <= 0 then
 				self.character.charState := self.character.neutralCharState;
@@ -311,7 +313,7 @@ end
  */
 class PanicState < CharacterState
 	operations
-		update();
+		update()
 		begin
 			if self.character.target.health <= 0 then
 				self.character.charState := self.character.neutralCharState;
@@ -335,10 +337,5 @@ end
 association charState between
   Character[1] role character
   CharacterState[1] role characterState
-end
-
-association isTargeting between
-  Character[1] role character
-  Character[1] role target
 end
 

@@ -1,0 +1,9 @@
+-- 1. Create the Characters
+
+!new PlayerCharacter('hero')
+!hero.initInstances()
+
+!new NonPlayerCharacter('troll')
+!troll.initInstances()
+
+!hero.setTarget();
