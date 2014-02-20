@@ -206,7 +206,7 @@ class Character
 				panic -> die { [self.health <= 0] update() }
 
 
-				/*handel when states stay constant*/
+				/*handle when states stay constant*/
 
 				neutral -> neutral{update()}
 				player -> player{update()}
