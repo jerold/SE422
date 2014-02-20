@@ -220,6 +220,7 @@ class PlayerCharacter < Character
 			self.yCoordinate := 0;
 			self.health := 100;
 			self.weaponStrength := 10;
+			self.attackRange := 10;
 		end
 end
 
@@ -236,6 +237,7 @@ class NonPlayerCharacter < Character
 			self.yCoordinate := 50;
 			self.health := 30;
 			self.weaponStrength := 10;
+			self.attackRange := 10;
 			self.setTarget();
 		end
 end
@@ -336,6 +338,6 @@ end
 
 association charState between
   Character[1] role character
-  CharacterState[1] role characterState
+  CharacterState[5] role characterState
 end
 

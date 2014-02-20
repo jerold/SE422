@@ -6,4 +6,16 @@
 !new NonPlayerCharacter('troll')
 !troll.initInstances()
 
+!new NonPlayerCharacter('zombie')
+!zombie.initInstances()
+
 !hero.setTarget();
+!troll.setTarget();
+!zombie.setTarget();
+
+-- 2. Example of an NPC changing states to flee
+
+!troll.health := 9
+-- since the trolls health is less than players attack the troll will flee.
+-- Though only condition when troll would not flee is if it has a more attack 
+-- then what the players health currently is. 
