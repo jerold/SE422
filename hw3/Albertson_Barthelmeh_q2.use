@@ -6,11 +6,11 @@ model FPS
 class Character
 	attributes
 		name : String init = 'Unknown'
-		health : Integer init = 0
+		health : Integer init = 1
 		maxVelocity : Integer init = 1
 		xCoordinate : Integer
 		yCoordinate : Integer
-		attackRange : Integer
+		attackRange : Integer init = 5
 		weaponStrength : Integer init = 0
 		target : Character
 		charState : CharacterState
@@ -49,6 +49,7 @@ class Character
 			self.dieCharState := dieCharState1;
 			insert(self, dieCharState1) into charState;
 
+			self.charState := self.neutralCharState;
 			self.initCharacter();
 		end
 
@@ -57,7 +58,6 @@ class Character
 		 */
 		initCharacter()
 		begin
-			self.charState := self.neutralCharState;
 		end
 
 		/*
@@ -73,7 +73,9 @@ class Character
 		 */
 		setTarget()
 		begin
-			self.target := Character.allInstances->select(p:Character | p.name <> self.name and p.health > 0)->asSequence()->first();
+			if Character.allInstances->select(p:Character | p.name <> self.name and p.health > 0)->notEmpty() then
+				self.target := Character.allInstances->select(p:Character | p.name <> self.name and p.health > 0)->asSequence()->first();
+			end;
 		end
 
 		/*
@@ -136,6 +138,9 @@ class Character
 		doAttack()
 		begin
 			self.target.takeHit(self.weaponStrength);
+			if self.target.health <= 0 then
+				self.setTarget()
+			end;
 		end
 
 		/*
@@ -184,35 +189,34 @@ class Character
 		psm Usage
 			states
 				startUp:initial
-				player [self.name = 'The Player']
-				neutral [self.target.health <= 0]
-				attack [self.target.health > 0 and (self.target.weaponStrength < self.health or self.target.health <= self.weaponStrength)]
-				panic [self.target.health > 0 and self.target.weaponStrength >= self.health and self.target.health > self.weaponStrength]
+				player [self.name = 'The Player' and self.health > 0]
+				neutral [self.name <> 'The Player' and self.target.health <= 0 and self.health > 0]
+				attack [self.name <> 'The Player' and self.target.health > 0 and self.health > 10]
+				panic [self.name <> 'The Player' and self.target.health > 0 and self.health <= 10 and self.health > 0]
 				die [self.health <= 0]
 			transitions
 				startUp -> neutral { create }
 
-				neutral -> player { [self.name = 'The Player'] update() }
-				neutral -> attack { [self.target.weaponStrength < self.health] update() }
-				neutral -> panic { [self.target.weaponStrength >= self.health] update() }
-				neutral -> die { [self.health <= 0] update() }
+				player -> player {[self.health > 0] update()}
+				player -> die {[self.health <= 0] update()}
 
-				attack -> neutral { [self.target.health <= 0] update() }
-				attack -> panic { [self.target.weaponStrength >= self.health and self.target.health > self.weaponStrength] update() }
-				attack -> die { [self.health <= 0] update() }
+				neutral -> player {[self.name = 'The Player' and self.health > 0] update()}
+				neutral -> neutral {[self.name <> 'The Player' and self.target.health <= 0 and self.health > 0] update()}
+				neutral -> attack {[self.name <> 'The Player' and self.target.health > 0 and self.health > 10] update()}
+				neutral -> panic {[self.name <> 'The Player' and self.target.health > 0 and self.health <= 10 and self.health > 0] update()}
+				neutral -> die {[self.health <= 0] update()}
 
-				panic -> neutral { [self.target.health <= 0] update() }
-				panic -> attack { [self.target.health <= self.weaponStrength] update() }
-				panic -> die { [self.health <= 0] update() }
+				attack -> neutral {[self.name <> 'The Player' and self.target.health <= 0 and self.health > 0] update()}
+				attack -> attack {[self.name <> 'The Player' and self.target.health > 0 and self.health > 10] update()}
+				attack -> panic {[self.name <> 'The Player' and self.target.health > 0 and self.health <= 10 and self.health > 0] update()}
+				attack -> die {[self.health <= 0] update()}
 
+				panic -> neutral {[self.name <> 'The Player' and self.target.health <= 0 and self.health > 0] update()}
+				panic -> attack {[self.name <> 'The Player' and self.target.health > 0 and self.health > 10] update()}
+				panic -> panic {[self.name <> 'The Player' and self.target.health > 0 and self.health <= 10 and self.health > 0] update()}
+				panic -> die {[self.health <= 0] update()}
 
-				/*handle when states stay constant*/
-
-				neutral -> neutral{update()}
-				player -> player{update()}
-				attack -> attack{update()}
-				panic -> panic{update()}
-				die -> die{update()}
+				die -> die {update()}
 		end
 end
 
@@ -223,13 +227,13 @@ class PlayerCharacter < Character
 		 */
 		initCharacter()
 		begin
-			self.name := 'The Player';
 			self.charState := self.playerCharState;
+			self.name := 'The Player';
 			self.xCoordinate := 0;
 			self.yCoordinate := 0;
 			self.health := 100;
+			self.maxVelocity := 2;
 			self.weaponStrength := 10;
-			self.attackRange := 10;
 		end
 end
 
@@ -241,12 +245,10 @@ class NonPlayerCharacter < Character
 		initCharacter()
 		begin
 			self.name := 'NPC';
-			self.charState := self.neutralCharState;
 			self.xCoordinate := 50;
 			self.yCoordinate := 50;
 			self.health := 30;
 			self.weaponStrength := 10;
-			self.attackRange := 10;
 			self.setTarget();
 		end
 end
@@ -259,6 +261,23 @@ class CharacterState
 	operations
 		update()
 		begin
+			if self.character.name = 'The Player' then
+				self.character.charState := self.character.playerCharState
+			else
+				if self.character.health <= 0 then
+					self.character.charState := self.character.dieCharState
+				else
+					if self.character.target.health > 0 then
+						if self.character.health <= 10 then
+							self.character.charState := self.character.panicCharState;
+						else
+							self.character.charState := self.character.attackCharState;
+						end;
+					else
+						self.character.charState := self.character.neutralCharState;
+					end;
+				end;
+			end;
 		end
 end
 
@@ -269,7 +288,17 @@ class PlayerState < CharacterState
 	operations
 		update()
 		begin
-			self.character.health := self.character.health + 1;
+			if self.character.name = 'The Player' then
+				self.character.charState := self.character.playerCharState
+			else
+				if self.character.health <= 0 then
+					self.character.charState := self.character.dieCharState
+				else
+					if self.character.health < 100 then
+						self.character.health := self.character.health + 1;
+					end;
+				end;
+			end;
 		end
 end
 
@@ -283,21 +312,6 @@ end
  * may also DIE if hit to death
  */
 class NeutralState < CharacterState
-	operations
-		update()
-		begin
-		if self.character.name = 'The Player' then
-			self.character.charState := self.character.playerCharState
-		else
-			if self.character.target.health > 0 then
-				if self.character.target.weaponStrength < self.character.health then
-					self.character.charState := self.character.attackCharState;
-				else
-					self.character.charState := self.character.panicCharState;
-				end;
-			end;
-		end;
-		end
 end
 
 /*
@@ -309,13 +323,24 @@ class AttackState < CharacterState
 	operations
 		update()
 		begin
-			if self.character.target.health <= 0 then
-				self.character.charState := self.character.neutralCharState;
+			if self.character.name = 'The Player' then
+				self.character.charState := self.character.playerCharState
 			else
-				if self.character.target.weaponStrength < self.character.health or self.character.target.health <= self.character.weaponStrength then
-					self.character.fight();
+				if self.character.health <= 0 then
+					self.character.charState := self.character.dieCharState
 				else
-					self.character.charState := self.character.panicCharState;
+					if self.character.target.health > 0 then
+						if self.character.health <= 10 then
+							self.character.charState := self.character.panicCharState;
+						else
+							self.character.fight();
+							if self.character.target.health <= 0 then
+								self.character.charState := self.character.neutralCharState;
+							end;
+						end;
+					else
+						self.character.charState := self.character.neutralCharState;
+					end;
 				end;
 			end;
 		end
@@ -330,13 +355,21 @@ class PanicState < CharacterState
 	operations
 		update()
 		begin
-			if self.character.target.health <= 0 then
-				self.character.charState := self.character.neutralCharState;
+			if self.character.name = 'The Player' then
+				self.character.charState := self.character.playerCharState
 			else
-				if self.character.target.health <= self.character.weaponStrength then
-					self.character.charState := self.character.attackCharState;
+				if self.character.health <= 0 then
+					self.character.charState := self.character.dieCharState
 				else
-					self.character.flee();
+					if self.character.target.health > 0 then
+						if self.character.health <= 10 then
+							self.character.flee();
+						else
+							self.character.charState := self.character.attackCharState;
+						end;
+					else
+						self.character.charState := self.character.neutralCharState;
+					end;
 				end;
 			end;
 		end

@@ -10,6 +10,14 @@
     <showrolenames>false</showrolenames>
     <showgrid>false</showgrid>
   </diagramOptions>
+  <node id="DieState3" sizeCalculated="true" type="Object">
+    <name>DieState3</name>
+    <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+      <x>154.7715491822349</x>
+      <y>550.5443279825915</y>
+    </strategy>
+    <hidden>false</hidden>
+  </node>
   <node id="DieState1" sizeCalculated="true" type="Object">
     <name>DieState1</name>
     <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
@@ -34,27 +42,11 @@
     </strategy>
     <hidden>false</hidden>
   </node>
-  <node id="troll" sizeCalculated="true" type="Object">
-    <name>troll</name>
+  <node id="PlayerState3" sizeCalculated="true" type="Object">
+    <name>PlayerState3</name>
     <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
-      <x>629.7153541776324</x>
-      <y>241.37015481170658</y>
-    </strategy>
-    <hidden>false</hidden>
-  </node>
-  <node id="NeutralState2" sizeCalculated="true" type="Object">
-    <name>NeutralState2</name>
-    <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
-      <x>474.95906453578516</x>
-      <y>240.5614932722629</y>
-    </strategy>
-    <hidden>false</hidden>
-  </node>
-  <node id="PanicState2" sizeCalculated="true" type="Object">
-    <name>PanicState2</name>
-    <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
-      <x>497.34162751717577</x>
-      <y>295.5292380350852</y>
+      <x>452.9582645258324</x>
+      <y>470.3874698780769</y>
     </strategy>
     <hidden>false</hidden>
   </node>
@@ -74,11 +66,67 @@
     </strategy>
     <hidden>false</hidden>
   </node>
-  <node id="NeutralState1" sizeCalculated="true" type="Object">
-    <name>NeutralState1</name>
+  <node id="PanicState3" sizeCalculated="true" type="Object">
+    <name>PanicState3</name>
     <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
-      <x>49.17427278867257</x>
-      <y>110.54052953297048</y>
+      <x>132.99188385897745</x>
+      <y>524.2419030081404</y>
+    </strategy>
+    <hidden>false</hidden>
+  </node>
+  <node id="NeutralState3" sizeCalculated="true" type="Object">
+    <name>NeutralState3</name>
+    <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+      <x>110.72803167103172</x>
+      <y>470.18279865183933</y>
+    </strategy>
+    <hidden>false</hidden>
+  </node>
+  <node id="PanicState2" sizeCalculated="true" type="Object">
+    <name>PanicState2</name>
+    <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+      <x>497.34162751717577</x>
+      <y>295.5292380350852</y>
+    </strategy>
+    <hidden>false</hidden>
+  </node>
+  <node id="zombie" sizeCalculated="true" type="Object">
+    <name>zombie</name>
+    <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+      <x>266.68768925642905</x>
+      <y>470.2204013174164</y>
+    </strategy>
+    <hidden>false</hidden>
+  </node>
+  <node id="troll" sizeCalculated="true" type="Object">
+    <name>troll</name>
+    <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+      <x>629.7153541776324</x>
+      <y>241.37015481170658</y>
+    </strategy>
+    <hidden>false</hidden>
+  </node>
+  <node id="NeutralState2" sizeCalculated="true" type="Object">
+    <name>NeutralState2</name>
+    <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+      <x>474.95906453578516</x>
+      <y>240.5614932722629</y>
+    </strategy>
+    <hidden>false</hidden>
+  </node>
+  <node id="AttackState3" sizeCalculated="true" type="Object">
+    <name>AttackState3</name>
+    <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+      <x>121.12062435405207</x>
+      <y>496.87824277007337</y>
+    </strategy>
+    <hidden>false</hidden>
+  </node>
+  <node id="AttackState2" sizeCalculated="true" type="Object">
+    <name>AttackState2</name>
+    <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
+      <x>485.4145158093571</x>
+      <y>268.78811902309224</y>
     </strategy>
     <hidden>false</hidden>
   </node>
@@ -90,11 +138,11 @@
     </strategy>
     <hidden>false</hidden>
   </node>
-  <node id="AttackState2" sizeCalculated="true" type="Object">
-    <name>AttackState2</name>
+  <node id="NeutralState1" sizeCalculated="true" type="Object">
+    <name>NeutralState1</name>
     <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyFixed">
-      <x>485.4145158093571</x>
-      <y>268.78811902309224</y>
+      <x>49.17427278867257</x>
+      <y>110.54052953297048</y>
     </strategy>
     <hidden>false</hidden>
   </node>
@@ -107,40 +155,12 @@
     <hidden>false</hidden>
   </node>
   <edge type="BinaryEdge">
-    <source>troll</source>
-    <target>PlayerState2</target>
+    <source>zombie</source>
+    <target>AttackState3</target>
     <name>charState</name>
     <properties>
       <edgeproperty
-        id="[charState : (character:troll, characterState:PlayerState2)]::source::rolename"
-        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
-        <name>character</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:troll, characterState:PlayerState2)]::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>TOP</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty
-        id="[charState : (character:troll, characterState:PlayerState2)]::source::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
-        <name>1</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:troll, characterState:PlayerState2)]::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>BOTTOM</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty
-        id="[charState : (character:troll, characterState:PlayerState2)]::AssociationName"
+        id="[charState : (character:zombie, characterState:AttackState3)]::AssociationName"
         sizeCalculated="true" type="associationName" userDefined="false" visible="true">
         <name>charState</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
@@ -149,20 +169,34 @@
           <offsetX>0.0</offsetX>
           <offsetY>-10.0</offsetY>
           <related length="2">
-            <related0>[charState : (character:troll, characterState:PlayerState2)]::WayPoint::0</related0>
-            <related1>[charState : (character:troll, characterState:PlayerState2)]::WayPoint::1</related1>
+            <related0>[charState : (character:zombie, characterState:AttackState3)]::WayPoint::0</related0>
+            <related1>[charState : (character:zombie, characterState:AttackState3)]::WayPoint::1</related1>
           </related>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
-        id="[charState : (character:troll, characterState:PlayerState2)]::target::rolename"
-        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
-        <name>characterState</name>
+        id="[charState : (character:zombie, characterState:AttackState3)]::source::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>1</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:troll, characterState:PlayerState2)]::WayPoint::1</attached>
+          <attached>[charState : (character:zombie, characterState:AttackState3)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:AttackState3)]::source::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>character</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:AttackState3)]::WayPoint::0</attached>
           <offset_x>8</offset_x>
           <offset_y>8</offset_y>
           <placement>TOP</placement>
@@ -170,13 +204,27 @@
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
-        id="[charState : (character:troll, characterState:PlayerState2)]::target::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
-        <name>1</name>
+        id="[charState : (character:zombie, characterState:AttackState3)]::target::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>characterState</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:troll, characterState:PlayerState2)]::WayPoint::1</attached>
+          <attached>[charState : (character:zombie, characterState:AttackState3)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:AttackState3)]::target::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>5</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:AttackState3)]::WayPoint::1</attached>
           <offset_x>8</offset_x>
           <offset_y>8</offset_y>
           <placement>BOTTOM</placement>
@@ -186,7 +234,7 @@
     </properties>
     <waypoints>
       <edgeproperty
-        id="[charState : (character:troll, characterState:PlayerState2)]::WayPoint::0"
+        id="[charState : (character:zombie, characterState:AttackState3)]::WayPoint::0"
         sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
         <name>0</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
@@ -198,7 +246,7 @@
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
-        id="[charState : (character:troll, characterState:PlayerState2)]::WayPoint::1"
+        id="[charState : (character:zombie, characterState:AttackState3)]::WayPoint::1"
         sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
         <name>1</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
@@ -211,13 +259,29 @@
       </edgeproperty>
     </waypoints>
     <hidden>false</hidden>
-    <linkValue>[charState : (character:troll, characterState:PlayerState2)]</linkValue>
+    <linkValue>[charState : (character:zombie, characterState:AttackState3)]</linkValue>
   </edge>
   <edge type="BinaryEdge">
     <source>hero</source>
     <target>AttackState1</target>
     <name>charState</name>
     <properties>
+      <edgeproperty
+        id="[charState : (character:hero, characterState:AttackState1)]::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>charState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>[charState : (character:hero, characterState:AttackState1)]::WayPoint::0</related0>
+            <related1>[charState : (character:hero, characterState:AttackState1)]::WayPoint::1</related1>
+          </related>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
       <edgeproperty
         id="[charState : (character:hero, characterState:AttackState1)]::source::multiplicity"
         sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
@@ -247,18 +311,16 @@
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
-        id="[charState : (character:hero, characterState:AttackState1)]::AssociationName"
-        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
-        <name>charState</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+        id="[charState : (character:hero, characterState:AttackState1)]::target::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>5</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
-          <offsetX>0.0</offsetX>
-          <offsetY>-10.0</offsetY>
-          <related length="2">
-            <related0>[charState : (character:hero, characterState:AttackState1)]::WayPoint::0</related0>
-            <related1>[charState : (character:hero, characterState:AttackState1)]::WayPoint::1</related1>
-          </related>
+          <attached>[charState : (character:hero, characterState:AttackState1)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -273,20 +335,6 @@
           <offset_x>8</offset_x>
           <offset_y>8</offset_y>
           <placement>TOP</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty
-        id="[charState : (character:hero, characterState:AttackState1)]::target::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
-        <name>1</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:hero, characterState:AttackState1)]::WayPoint::1</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>BOTTOM</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -326,16 +374,18 @@
     <name>charState</name>
     <properties>
       <edgeproperty
-        id="[charState : (character:troll, characterState:NeutralState2)]::source::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
-        <name>1</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+        id="[charState : (character:troll, characterState:NeutralState2)]::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>charState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:troll, characterState:NeutralState2)]::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>BOTTOM</placement>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>[charState : (character:troll, characterState:NeutralState2)]::WayPoint::0</related0>
+            <related1>[charState : (character:troll, characterState:NeutralState2)]::WayPoint::1</related1>
+          </related>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -354,25 +404,23 @@
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
-        id="[charState : (character:troll, characterState:NeutralState2)]::AssociationName"
-        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
-        <name>charState</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+        id="[charState : (character:troll, characterState:NeutralState2)]::source::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
-          <offsetX>0.0</offsetX>
-          <offsetY>-10.0</offsetY>
-          <related length="2">
-            <related0>[charState : (character:troll, characterState:NeutralState2)]::WayPoint::0</related0>
-            <related1>[charState : (character:troll, characterState:NeutralState2)]::WayPoint::1</related1>
-          </related>
+          <attached>[charState : (character:troll, characterState:NeutralState2)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
         id="[charState : (character:troll, characterState:NeutralState2)]::target::multiplicity"
         sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
-        <name>1</name>
+        <name>5</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
@@ -428,40 +476,12 @@
     <linkValue>[charState : (character:troll, characterState:NeutralState2)]</linkValue>
   </edge>
   <edge type="BinaryEdge">
-    <source>troll</source>
-    <target>AttackState2</target>
+    <source>hero</source>
+    <target>PlayerState1</target>
     <name>charState</name>
     <properties>
       <edgeproperty
-        id="[charState : (character:troll, characterState:AttackState2)]::source::rolename"
-        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
-        <name>character</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:troll, characterState:AttackState2)]::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>TOP</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty
-        id="[charState : (character:troll, characterState:AttackState2)]::source::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
-        <name>1</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:troll, characterState:AttackState2)]::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>BOTTOM</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty
-        id="[charState : (character:troll, characterState:AttackState2)]::AssociationName"
+        id="[charState : (character:hero, characterState:PlayerState1)]::AssociationName"
         sizeCalculated="true" type="associationName" userDefined="false" visible="true">
         <name>charState</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
@@ -470,20 +490,34 @@
           <offsetX>0.0</offsetX>
           <offsetY>-10.0</offsetY>
           <related length="2">
-            <related0>[charState : (character:troll, characterState:AttackState2)]::WayPoint::0</related0>
-            <related1>[charState : (character:troll, characterState:AttackState2)]::WayPoint::1</related1>
+            <related0>[charState : (character:hero, characterState:PlayerState1)]::WayPoint::0</related0>
+            <related1>[charState : (character:hero, characterState:PlayerState1)]::WayPoint::1</related1>
           </related>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
-        id="[charState : (character:troll, characterState:AttackState2)]::target::multiplicity"
+        id="[charState : (character:hero, characterState:PlayerState1)]::source::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>character</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:hero, characterState:PlayerState1)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:hero, characterState:PlayerState1)]::source::multiplicity"
         sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
         <name>1</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:troll, characterState:AttackState2)]::WayPoint::1</attached>
+          <attached>[charState : (character:hero, characterState:PlayerState1)]::WayPoint::0</attached>
           <offset_x>8</offset_x>
           <offset_y>8</offset_y>
           <placement>BOTTOM</placement>
@@ -491,23 +525,37 @@
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
-        id="[charState : (character:troll, characterState:AttackState2)]::target::rolename"
+        id="[charState : (character:hero, characterState:PlayerState1)]::target::rolename"
         sizeCalculated="true" type="rolename" userDefined="false" visible="true">
         <name>characterState</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:troll, characterState:AttackState2)]::WayPoint::1</attached>
+          <attached>[charState : (character:hero, characterState:PlayerState1)]::WayPoint::1</attached>
           <offset_x>8</offset_x>
           <offset_y>8</offset_y>
           <placement>TOP</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:hero, characterState:PlayerState1)]::target::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>5</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:hero, characterState:PlayerState1)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
     </properties>
     <waypoints>
       <edgeproperty
-        id="[charState : (character:troll, characterState:AttackState2)]::WayPoint::0"
+        id="[charState : (character:hero, characterState:PlayerState1)]::WayPoint::0"
         sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
         <name>0</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
@@ -519,7 +567,7 @@
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
-        id="[charState : (character:troll, characterState:AttackState2)]::WayPoint::1"
+        id="[charState : (character:hero, characterState:PlayerState1)]::WayPoint::1"
         sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
         <name>1</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
@@ -532,7 +580,7 @@
       </edgeproperty>
     </waypoints>
     <hidden>false</hidden>
-    <linkValue>[charState : (character:troll, characterState:AttackState2)]</linkValue>
+    <linkValue>[charState : (character:hero, characterState:PlayerState1)]</linkValue>
   </edge>
   <edge type="BinaryEdge">
     <source>hero</source>
@@ -540,16 +588,18 @@
     <name>charState</name>
     <properties>
       <edgeproperty
-        id="[charState : (character:hero, characterState:DieState1)]::source::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
-        <name>1</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+        id="[charState : (character:hero, characterState:DieState1)]::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>charState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:hero, characterState:DieState1)]::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>BOTTOM</placement>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>[charState : (character:hero, characterState:DieState1)]::WayPoint::0</related0>
+            <related1>[charState : (character:hero, characterState:DieState1)]::WayPoint::1</related1>
+          </related>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -568,25 +618,23 @@
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
-        id="[charState : (character:hero, characterState:DieState1)]::AssociationName"
-        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
-        <name>charState</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+        id="[charState : (character:hero, characterState:DieState1)]::source::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
-          <offsetX>0.0</offsetX>
-          <offsetY>-10.0</offsetY>
-          <related length="2">
-            <related0>[charState : (character:hero, characterState:DieState1)]::WayPoint::0</related0>
-            <related1>[charState : (character:hero, characterState:DieState1)]::WayPoint::1</related1>
-          </related>
+          <attached>[charState : (character:hero, characterState:DieState1)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
         id="[charState : (character:hero, characterState:DieState1)]::target::multiplicity"
         sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
-        <name>1</name>
+        <name>5</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
@@ -642,40 +690,12 @@
     <linkValue>[charState : (character:hero, characterState:DieState1)]</linkValue>
   </edge>
   <edge type="BinaryEdge">
-    <source>hero</source>
-    <target>PlayerState1</target>
+    <source>troll</source>
+    <target>DieState2</target>
     <name>charState</name>
     <properties>
       <edgeproperty
-        id="[charState : (character:hero, characterState:PlayerState1)]::source::rolename"
-        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
-        <name>character</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:hero, characterState:PlayerState1)]::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>TOP</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty
-        id="[charState : (character:hero, characterState:PlayerState1)]::source::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
-        <name>1</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:hero, characterState:PlayerState1)]::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>BOTTOM</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty
-        id="[charState : (character:hero, characterState:PlayerState1)]::AssociationName"
+        id="[charState : (character:troll, characterState:DieState2)]::AssociationName"
         sizeCalculated="true" type="associationName" userDefined="false" visible="true">
         <name>charState</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
@@ -684,86 +704,9 @@
           <offsetX>0.0</offsetX>
           <offsetY>-10.0</offsetY>
           <related length="2">
-            <related0>[charState : (character:hero, characterState:PlayerState1)]::WayPoint::0</related0>
-            <related1>[charState : (character:hero, characterState:PlayerState1)]::WayPoint::1</related1>
+            <related0>[charState : (character:troll, characterState:DieState2)]::WayPoint::0</related0>
+            <related1>[charState : (character:troll, characterState:DieState2)]::WayPoint::1</related1>
           </related>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty
-        id="[charState : (character:hero, characterState:PlayerState1)]::target::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
-        <name>1</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:hero, characterState:PlayerState1)]::WayPoint::1</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>BOTTOM</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty
-        id="[charState : (character:hero, characterState:PlayerState1)]::target::rolename"
-        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
-        <name>characterState</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:hero, characterState:PlayerState1)]::WayPoint::1</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>TOP</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-    </properties>
-    <waypoints>
-      <edgeproperty
-        id="[charState : (character:hero, characterState:PlayerState1)]::WayPoint::0"
-        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
-        <name>0</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-        </strategy>
-        <id>0</id>
-        <specialid>1</specialid>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty
-        id="[charState : (character:hero, characterState:PlayerState1)]::WayPoint::1"
-        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
-        <name>1</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-        </strategy>
-        <id>1</id>
-        <specialid>2</specialid>
-        <hidden>false</hidden>
-      </edgeproperty>
-    </waypoints>
-    <hidden>false</hidden>
-    <linkValue>[charState : (character:hero, characterState:PlayerState1)]</linkValue>
-  </edge>
-  <edge type="BinaryEdge">
-    <source>troll</source>
-    <target>DieState2</target>
-    <name>charState</name>
-    <properties>
-      <edgeproperty
-        id="[charState : (character:troll, characterState:DieState2)]::source::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
-        <name>1</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:troll, characterState:DieState2)]::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>BOTTOM</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -782,29 +725,13 @@
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
-        id="[charState : (character:troll, characterState:DieState2)]::AssociationName"
-        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
-        <name>charState</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <offsetX>0.0</offsetX>
-          <offsetY>-10.0</offsetY>
-          <related length="2">
-            <related0>[charState : (character:troll, characterState:DieState2)]::WayPoint::0</related0>
-            <related1>[charState : (character:troll, characterState:DieState2)]::WayPoint::1</related1>
-          </related>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty
-        id="[charState : (character:troll, characterState:DieState2)]::target::multiplicity"
+        id="[charState : (character:troll, characterState:DieState2)]::source::multiplicity"
         sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
         <name>1</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:troll, characterState:DieState2)]::WayPoint::1</attached>
+          <attached>[charState : (character:troll, characterState:DieState2)]::WayPoint::0</attached>
           <offset_x>8</offset_x>
           <offset_y>8</offset_y>
           <placement>BOTTOM</placement>
@@ -822,6 +749,20 @@
           <offset_x>8</offset_x>
           <offset_y>8</offset_y>
           <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:DieState2)]::target::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>5</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:troll, characterState:DieState2)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -856,21 +797,558 @@
     <linkValue>[charState : (character:troll, characterState:DieState2)]</linkValue>
   </edge>
   <edge type="BinaryEdge">
-    <source>troll</source>
-    <target>PanicState2</target>
+    <source>zombie</source>
+    <target>NeutralState3</target>
     <name>charState</name>
     <properties>
       <edgeproperty
-        id="[charState : (character:troll, characterState:PanicState2)]::source::rolename"
+        id="[charState : (character:zombie, characterState:NeutralState3)]::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>charState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>[charState : (character:zombie, characterState:NeutralState3)]::WayPoint::0</related0>
+            <related1>[charState : (character:zombie, characterState:NeutralState3)]::WayPoint::1</related1>
+          </related>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:NeutralState3)]::source::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:NeutralState3)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:NeutralState3)]::source::rolename"
         sizeCalculated="true" type="rolename" userDefined="false" visible="true">
         <name>character</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:troll, characterState:PanicState2)]::WayPoint::0</attached>
+          <attached>[charState : (character:zombie, characterState:NeutralState3)]::WayPoint::0</attached>
           <offset_x>8</offset_x>
           <offset_y>8</offset_y>
           <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:NeutralState3)]::target::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>characterState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:NeutralState3)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:NeutralState3)]::target::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>5</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:NeutralState3)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+    </properties>
+    <waypoints>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:NeutralState3)]::WayPoint::0"
+        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
+        <name>0</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+        </strategy>
+        <id>0</id>
+        <specialid>1</specialid>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:NeutralState3)]::WayPoint::1"
+        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+        </strategy>
+        <id>1</id>
+        <specialid>2</specialid>
+        <hidden>false</hidden>
+      </edgeproperty>
+    </waypoints>
+    <hidden>false</hidden>
+    <linkValue>[charState : (character:zombie, characterState:NeutralState3)]</linkValue>
+  </edge>
+  <edge type="BinaryEdge">
+    <source>zombie</source>
+    <target>DieState3</target>
+    <name>charState</name>
+    <properties>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:DieState3)]::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>charState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>[charState : (character:zombie, characterState:DieState3)]::WayPoint::0</related0>
+            <related1>[charState : (character:zombie, characterState:DieState3)]::WayPoint::1</related1>
+          </related>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:DieState3)]::source::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:DieState3)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:DieState3)]::source::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>character</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:DieState3)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:DieState3)]::target::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>5</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:DieState3)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:DieState3)]::target::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>characterState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:DieState3)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+    </properties>
+    <waypoints>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:DieState3)]::WayPoint::0"
+        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
+        <name>0</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+        </strategy>
+        <id>0</id>
+        <specialid>1</specialid>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:DieState3)]::WayPoint::1"
+        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+        </strategy>
+        <id>1</id>
+        <specialid>2</specialid>
+        <hidden>false</hidden>
+      </edgeproperty>
+    </waypoints>
+    <hidden>false</hidden>
+    <linkValue>[charState : (character:zombie, characterState:DieState3)]</linkValue>
+  </edge>
+  <edge type="BinaryEdge">
+    <source>zombie</source>
+    <target>PanicState3</target>
+    <name>charState</name>
+    <properties>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:PanicState3)]::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>charState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>[charState : (character:zombie, characterState:PanicState3)]::WayPoint::0</related0>
+            <related1>[charState : (character:zombie, characterState:PanicState3)]::WayPoint::1</related1>
+          </related>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:PanicState3)]::source::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:PanicState3)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:PanicState3)]::source::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>character</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:PanicState3)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:PanicState3)]::target::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>5</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:PanicState3)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:PanicState3)]::target::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>characterState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:PanicState3)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+    </properties>
+    <waypoints>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:PanicState3)]::WayPoint::0"
+        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
+        <name>0</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+        </strategy>
+        <id>0</id>
+        <specialid>1</specialid>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:PanicState3)]::WayPoint::1"
+        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+        </strategy>
+        <id>1</id>
+        <specialid>2</specialid>
+        <hidden>false</hidden>
+      </edgeproperty>
+    </waypoints>
+    <hidden>false</hidden>
+    <linkValue>[charState : (character:zombie, characterState:PanicState3)]</linkValue>
+  </edge>
+  <edge type="BinaryEdge">
+    <source>troll</source>
+    <target>PlayerState2</target>
+    <name>charState</name>
+    <properties>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:PlayerState2)]::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>charState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>[charState : (character:troll, characterState:PlayerState2)]::WayPoint::0</related0>
+            <related1>[charState : (character:troll, characterState:PlayerState2)]::WayPoint::1</related1>
+          </related>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:PlayerState2)]::source::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>character</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:troll, characterState:PlayerState2)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:PlayerState2)]::source::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:troll, characterState:PlayerState2)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:PlayerState2)]::target::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>5</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:troll, characterState:PlayerState2)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:PlayerState2)]::target::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>characterState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:troll, characterState:PlayerState2)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+    </properties>
+    <waypoints>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:PlayerState2)]::WayPoint::0"
+        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
+        <name>0</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+        </strategy>
+        <id>0</id>
+        <specialid>1</specialid>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:PlayerState2)]::WayPoint::1"
+        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+        </strategy>
+        <id>1</id>
+        <specialid>2</specialid>
+        <hidden>false</hidden>
+      </edgeproperty>
+    </waypoints>
+    <hidden>false</hidden>
+    <linkValue>[charState : (character:troll, characterState:PlayerState2)]</linkValue>
+  </edge>
+  <edge type="BinaryEdge">
+    <source>troll</source>
+    <target>AttackState2</target>
+    <name>charState</name>
+    <properties>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:AttackState2)]::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>charState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>[charState : (character:troll, characterState:AttackState2)]::WayPoint::0</related0>
+            <related1>[charState : (character:troll, characterState:AttackState2)]::WayPoint::1</related1>
+          </related>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:AttackState2)]::source::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:troll, characterState:AttackState2)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:AttackState2)]::source::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>character</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:troll, characterState:AttackState2)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:AttackState2)]::target::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>5</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:troll, characterState:AttackState2)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:AttackState2)]::target::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>characterState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:troll, characterState:AttackState2)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+    </properties>
+    <waypoints>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:AttackState2)]::WayPoint::0"
+        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
+        <name>0</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+        </strategy>
+        <id>0</id>
+        <specialid>1</specialid>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:AttackState2)]::WayPoint::1"
+        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+        </strategy>
+        <id>1</id>
+        <specialid>2</specialid>
+        <hidden>false</hidden>
+      </edgeproperty>
+    </waypoints>
+    <hidden>false</hidden>
+    <linkValue>[charState : (character:troll, characterState:AttackState2)]</linkValue>
+  </edge>
+  <edge type="BinaryEdge">
+    <source>troll</source>
+    <target>PanicState2</target>
+    <name>charState</name>
+    <properties>
+      <edgeproperty
+        id="[charState : (character:troll, characterState:PanicState2)]::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>charState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>[charState : (character:troll, characterState:PanicState2)]::WayPoint::0</related0>
+            <related1>[charState : (character:troll, characterState:PanicState2)]::WayPoint::1</related1>
+          </related>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -889,25 +1367,23 @@
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
-        id="[charState : (character:troll, characterState:PanicState2)]::AssociationName"
-        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
-        <name>charState</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+        id="[charState : (character:troll, characterState:PanicState2)]::source::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>character</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
-          <offsetX>0.0</offsetX>
-          <offsetY>-10.0</offsetY>
-          <related length="2">
-            <related0>[charState : (character:troll, characterState:PanicState2)]::WayPoint::0</related0>
-            <related1>[charState : (character:troll, characterState:PanicState2)]::WayPoint::1</related1>
-          </related>
+          <attached>[charState : (character:troll, characterState:PanicState2)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
         id="[charState : (character:troll, characterState:PanicState2)]::target::multiplicity"
         sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
-        <name>1</name>
+        <name>5</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
@@ -968,16 +1444,18 @@
     <name>charState</name>
     <properties>
       <edgeproperty
-        id="[charState : (character:hero, characterState:PanicState1)]::source::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
-        <name>1</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+        id="[charState : (character:hero, characterState:PanicState1)]::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>charState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:hero, characterState:PanicState1)]::WayPoint::0</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>BOTTOM</placement>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>[charState : (character:hero, characterState:PanicState1)]::WayPoint::0</related0>
+            <related1>[charState : (character:hero, characterState:PanicState1)]::WayPoint::1</related1>
+          </related>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -996,18 +1474,30 @@
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
-        id="[charState : (character:hero, characterState:PanicState1)]::AssociationName"
-        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
-        <name>charState</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+        id="[charState : (character:hero, characterState:PanicState1)]::source::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
-          <offsetX>0.0</offsetX>
-          <offsetY>-10.0</offsetY>
-          <related length="2">
-            <related0>[charState : (character:hero, characterState:PanicState1)]::WayPoint::0</related0>
-            <related1>[charState : (character:hero, characterState:PanicState1)]::WayPoint::1</related1>
-          </related>
+          <attached>[charState : (character:hero, characterState:PanicState1)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:hero, characterState:PanicState1)]::target::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>5</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:hero, characterState:PanicState1)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -1022,20 +1512,6 @@
           <offset_x>8</offset_x>
           <offset_y>8</offset_y>
           <placement>TOP</placement>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty
-        id="[charState : (character:hero, characterState:PanicState1)]::target::multiplicity"
-        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
-        <name>1</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <attached>[charState : (character:hero, characterState:PanicState1)]::WayPoint::1</attached>
-          <offset_x>8</offset_x>
-          <offset_y>8</offset_y>
-          <placement>BOTTOM</placement>
         </strategy>
         <hidden>false</hidden>
       </edgeproperty>
@@ -1075,6 +1551,22 @@
     <name>charState</name>
     <properties>
       <edgeproperty
+        id="[charState : (character:hero, characterState:NeutralState1)]::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>charState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>[charState : (character:hero, characterState:NeutralState1)]::WayPoint::0</related0>
+            <related1>[charState : (character:hero, characterState:NeutralState1)]::WayPoint::1</related1>
+          </related>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
         id="[charState : (character:hero, characterState:NeutralState1)]::source::rolename"
         sizeCalculated="true" type="rolename" userDefined="false" visible="true">
         <name>character</name>
@@ -1103,25 +1595,9 @@
         <hidden>false</hidden>
       </edgeproperty>
       <edgeproperty
-        id="[charState : (character:hero, characterState:NeutralState1)]::AssociationName"
-        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
-        <name>charState</name>
-        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
-          <userOffsetX>0.0</userOffsetX>
-          <userOffsetY>0.0</userOffsetY>
-          <offsetX>0.0</offsetX>
-          <offsetY>-10.0</offsetY>
-          <related length="2">
-            <related0>[charState : (character:hero, characterState:NeutralState1)]::WayPoint::0</related0>
-            <related1>[charState : (character:hero, characterState:NeutralState1)]::WayPoint::1</related1>
-          </related>
-        </strategy>
-        <hidden>false</hidden>
-      </edgeproperty>
-      <edgeproperty
         id="[charState : (character:hero, characterState:NeutralState1)]::target::multiplicity"
         sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
-        <name>1</name>
+        <name>5</name>
         <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
           <userOffsetX>0.0</userOffsetX>
           <userOffsetY>0.0</userOffsetY>
@@ -1175,5 +1651,112 @@
     </waypoints>
     <hidden>false</hidden>
     <linkValue>[charState : (character:hero, characterState:NeutralState1)]</linkValue>
+  </edge>
+  <edge type="BinaryEdge">
+    <source>zombie</source>
+    <target>PlayerState3</target>
+    <name>charState</name>
+    <properties>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:PlayerState3)]::AssociationName"
+        sizeCalculated="true" type="associationName" userDefined="false" visible="true">
+        <name>charState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <offsetX>0.0</offsetX>
+          <offsetY>-10.0</offsetY>
+          <related length="2">
+            <related0>[charState : (character:zombie, characterState:PlayerState3)]::WayPoint::0</related0>
+            <related1>[charState : (character:zombie, characterState:PlayerState3)]::WayPoint::1</related1>
+          </related>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:PlayerState3)]::source::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>character</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:PlayerState3)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:PlayerState3)]::source::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:PlayerState3)]::WayPoint::0</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:PlayerState3)]::target::rolename"
+        sizeCalculated="true" type="rolename" userDefined="false" visible="true">
+        <name>characterState</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:PlayerState3)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>TOP</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:PlayerState3)]::target::multiplicity"
+        sizeCalculated="true" type="multiplicity" userDefined="false" visible="true">
+        <name>5</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyRelativeToAttached">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+          <attached>[charState : (character:zombie, characterState:PlayerState3)]::WayPoint::1</attached>
+          <offset_x>8</offset_x>
+          <offset_y>8</offset_y>
+          <placement>BOTTOM</placement>
+        </strategy>
+        <hidden>false</hidden>
+      </edgeproperty>
+    </properties>
+    <waypoints>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:PlayerState3)]::WayPoint::0"
+        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
+        <name>0</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+        </strategy>
+        <id>0</id>
+        <specialid>1</specialid>
+        <hidden>false</hidden>
+      </edgeproperty>
+      <edgeproperty
+        id="[charState : (character:zombie, characterState:PlayerState3)]::WayPoint::1"
+        sizeCalculated="true" type="WayPoint" userDefined="false" visible="true">
+        <name>1</name>
+        <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyAttachedIntersection">
+          <userOffsetX>0.0</userOffsetX>
+          <userOffsetY>0.0</userOffsetY>
+        </strategy>
+        <id>1</id>
+        <specialid>2</specialid>
+        <hidden>false</hidden>
+      </edgeproperty>
+    </waypoints>
+    <hidden>false</hidden>
+    <linkValue>[charState : (character:zombie, characterState:PlayerState3)]</linkValue>
   </edge>
 </diagram_Layout>

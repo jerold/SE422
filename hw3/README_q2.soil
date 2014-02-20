@@ -1,39 +1,41 @@
 -- 1. Create the Characters
-
 !new PlayerCharacter('hero')
 !hero.initInstances()
-
 !new NonPlayerCharacter('troll')
 !troll.initInstances()
-
+!troll.moveTo(2, 1)
 !new NonPlayerCharacter('zombie')
 !zombie.initInstances()
-
-!troll.setTarget()
-!zombie.setTarget()
+!hero.setTarget()
 
 
 -- 2. Use of Update Function
-
--- update() is called for all characters after a turn to update their status
+-- update() is called for all characters, NPC's become agressive towards the player
 !hero.update()
 !troll.update()
 !zombie.update()
 
--- 3. Example of an NPC changing states to flee
 
-!troll.health := 9
+-- 3. have the hero deal some damage to the troll,
+--    the troll will automatically try to do damage to the player during update,
+--    the zombie will have moved towards the player
+!hero.fight()
+!hero.update()
 !troll.update()
--- since the trolls health is less than players attack the troll will flee.
--- The only condition when troll would not flee is if it has a more attack 
--- then what the players health currently is. 
+!zombie.update()
+!hero.fight()
 
--- 4. Example of Movement and Attacking
 
-!hero.moveTo(49,49)
---player teleports next to enemys and on update zombie executes attack
---but when player is updated it regans some health also when troll is
---updated it flees going to the new position of 51,51
+-- 4. Following the below updates we will see that the troll has entered panic mode as his health is below 10
+--    zombie will have moved towards the player as it is being agressive
+--    hero's health has regenerated as that's what hero health does
+!hero.update()
+!troll.update()
+!zombie.update()
+
+
+-- 5. Hero finishes the troll, troll dies and the hero has picked a new target
+!hero.fight()
 !hero.update()
 !troll.update()
 !zombie.update()
