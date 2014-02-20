@@ -204,6 +204,15 @@ class Character
 				panic -> neutral { [self.target.health <= 0] update() }
 				panic -> attack { [self.target.health <= self.weaponStrength] update() }
 				panic -> die { [self.health <= 0] update() }
+
+
+				/*handel when states stay constant*/
+
+				neutral -> neutral{update()}
+				player -> player{update()}
+				attack -> attack{update()}
+				panic -> panic{update()}
+				die -> die{update()}
 		end
 end
 

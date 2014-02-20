@@ -9,7 +9,6 @@
 !new NonPlayerCharacter('zombie')
 !zombie.initInstances()
 
-!hero.setTarget()
 !troll.setTarget()
 !zombie.setTarget()
 
@@ -28,3 +27,13 @@
 -- since the trolls health is less than players attack the troll will flee.
 -- The only condition when troll would not flee is if it has a more attack 
 -- then what the players health currently is. 
+
+-- 4. Example of Movement and Attacking
+
+!hero.moveTo(49,49)
+--player teleports next to enemys and on update zombie executes attack
+--but when player is updated it regans some health also when troll is
+--updated it flees going to the new position of 51,51
+!hero.update()
+!troll.update()
+!zombie.update()

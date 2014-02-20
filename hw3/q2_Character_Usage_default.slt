@@ -595,11 +595,11 @@
         <post/>
         <edgeproperty id="[(self.name = 'The Player')] update()/"
           sizeCalculated="true" type="TransitionLabel"
-          userDefined="false" visible="true">
+          userDefined="true" visible="true">
           <name>[(self.name = 'The Player')] update()/</name>
           <strategy type="org.tzi.use.gui.views.diagrams.elements.positioning.StrategyInBetween">
-            <userOffsetX>0.0</userOffsetX>
-            <userOffsetY>0.0</userOffsetY>
+            <userOffsetX>-59.0</userOffsetX>
+            <userOffsetY>23.0</userOffsetY>
             <offsetX>0.0</offsetX>
             <offsetY>10.0</offsetY>
             <related length="2">
