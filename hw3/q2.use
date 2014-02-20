@@ -192,7 +192,7 @@ class Character
 			transitions
 				startUp -> neutral { create }
 
-				neutral -> player { [self.name = 'The Player'] initCharacter() }
+				neutral -> player { [self.name = 'The Player'] update() }
 				neutral -> attack { [self.target.weaponStrength < self.health] update() }
 				neutral -> panic { [self.target.weaponStrength >= self.health] update() }
 				neutral -> die { [self.health <= 0] update() }
@@ -277,6 +277,9 @@ class NeutralState < CharacterState
 	operations
 		update()
 		begin
+		if self.character.name = 'The Player' then
+			self.character.charState := self.character.playerCharState
+		else
 			if self.character.target.health > 0 then
 				if self.character.target.weaponStrength < self.character.health then
 					self.character.charState := self.character.attackCharState;
@@ -284,6 +287,7 @@ class NeutralState < CharacterState
 					self.character.charState := self.character.panicCharState;
 				end;
 			end;
+		end;
 		end
 end
 

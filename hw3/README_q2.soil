@@ -9,13 +9,22 @@
 !new NonPlayerCharacter('zombie')
 !zombie.initInstances()
 
-!hero.setTarget();
-!troll.setTarget();
-!zombie.setTarget();
+!hero.setTarget()
+!troll.setTarget()
+!zombie.setTarget()
 
--- 2. Example of an NPC changing states to flee
+
+-- 2. Use of Update Function
+
+-- update() is called for all characters after a turn to update their status
+!hero.update()
+!troll.update()
+!zombie.update()
+
+-- 3. Example of an NPC changing states to flee
 
 !troll.health := 9
+!troll.update()
 -- since the trolls health is less than players attack the troll will flee.
--- Though only condition when troll would not flee is if it has a more attack 
+-- The only condition when troll would not flee is if it has a more attack 
 -- then what the players health currently is. 
